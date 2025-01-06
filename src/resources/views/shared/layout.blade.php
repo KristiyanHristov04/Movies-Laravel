@@ -11,7 +11,9 @@
 
 <body>
     @include('shared.partials.header')
-    @yield('content')
+    <div class="mb-16">
+        @yield('content')
+    </div>
     @include('shared.partials.footer')
 
     @vite('resources/js/app.js')
