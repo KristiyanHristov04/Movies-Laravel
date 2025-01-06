@@ -1,4 +1,4 @@
-<div class="flex items-start max-sm:flex-col bg-red-100 text-red-800 p-4 my-4 rounded-lg relative" role="alert">
+<div id="message" class="hover:cursor-pointer flex items-start max-sm:flex-col bg-red-100 text-red-800 p-4 my-4 rounded-lg relative" role="alert">
     <div class="flex items-center max-sm:mb-2">
         <svg xmlns="http://www.w3.org/2000/svg" class="w-[18px] fill-red-500 inline mr-3" viewBox="0 0 32 32">
             <path
