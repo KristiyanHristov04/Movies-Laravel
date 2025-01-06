@@ -1,4 +1,11 @@
-<form action="{{ route('movies.index') }}" method="GET">
+<form action="{{ route('movies.index') }}" method="GET"
+    class="flex gap-2">
+    <select name="sortByYear">
+        <option>-- Избери --</option>
+        <option value="newest" {{ request('sortByYear') === 'newest' ? 'selected' : '' }} class='py-3 px-5 hover:bg-gray-50 text-gray-800 text-sm cursor-pointer'>Най-нови</option>
+        <option value="oldest" {{ request('sortByYear') === 'oldest' ? 'selected' : '' }} class='py-3 px-5 hover:bg-gray-50 text-gray-800 text-sm cursor-pointer'>Най-стари</option>
+    </select>
+
     <div
         class='flex max-w-xs w-full bg-gray-100 px-4 py-2 rounded outline outline-transparent border focus-within:border-blue-600 focus-within:bg-transparent transition-all'>
         <input type='text' name="search" value="{{ request('search') }}" placeholder='Търсене на филм..'

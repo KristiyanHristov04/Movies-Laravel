@@ -26,15 +26,11 @@
                     <a href='{{ route('movies.index') }}' class='lg:hover:text-[#007bff] block text-[15px]'>Начало
                     </a>
                 </li>
-                <li class='max-lg:border-b max-lg:py-3 px-3'>
-                    <a href='{{ route('movies.index') }}' class='lg:hover:text-[#007bff] block text-[15px]'>Филми
-                    </a>
-                </li>
             </ul>
         </div>
 
         <div class='flex gap-4 ml-auto'>
-            @include('shared.partials.search')
+            @include('shared.partials.search-sorting')
             <button id="toggleOpen" class='lg:hidden'>
                 <svg class="w-7 h-7" fill="#000" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                     <path fill-rule="evenodd"

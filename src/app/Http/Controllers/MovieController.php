@@ -10,24 +10,33 @@ class MovieController extends Controller
     public function index(Request $request)
     {
         $search = $request->get('search');
+        $sortByYear = $request->get('sortByYear');
         $query = Movie::query();
         if ($search) {
             $query->where(function ($q) use ($search) {
                 $q->where('movie_name', 'like', '%' . $search . '%')
-                  ->orWhere('director', 'like', '%' . $search . '%')
-                  ->orWhere('year', 'like', '%' . $search . '%')
-                  ->orWhere('genre', 'like', '%' . $search . '%');
+                    ->orWhere('director', 'like', '%' . $search . '%')
+                    ->orWhere('year', 'like', '%' . $search . '%')
+                    ->orWhere('genre', 'like', '%' . $search . '%');
             });
         }
-        
-        $movies = $query->paginate(1)->appends(['search' => $search]);
+
+        if ($sortByYear) {
+            if ($sortByYear === 'asc') {
+                $query->orderBy('year', 'asc');
+            } else if ($sortByYear === 'desc') {
+                $query->orderBy('year', 'desc');
+            }
+        }
+
+        $movies = $query->paginate(2)->appends(['search' => $search, 'sortByYear' => $sortByYear]);
         return view('movies.index', ["movies" => $movies]);
     }
 
     public function show($id)
     {
         $movie = Movie::find($id);
-        if(!$movie) {
+        if (!$movie) {
             return redirect()->route('movies.index')->with('error', 'Не съществува такъв ресурс!');
         }
         return view('movies.show', ["movie" => $movie]);
@@ -79,7 +88,7 @@ class MovieController extends Controller
     public function edit($id)
     {
         $movie = Movie::find($id);
-        if(!$movie) {
+        if (!$movie) {
             return redirect()->route('movies.index')->with('error', 'Не съществува такъв ресурс!');
         }
         return view('movies.edit', ["movie" => $movie]);
