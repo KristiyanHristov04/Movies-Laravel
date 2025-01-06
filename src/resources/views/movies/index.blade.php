@@ -3,11 +3,14 @@
 @section('content')
     <div class="p-5">
         <h1 class="text-center text-3xl">Филми</h1>
+        @session('success')
+            @include('shared.partials.success-message')
+        @endsession
         <a href="{{ route('movies.create') }}"
-            class="mb-4 inline-block px-5 py-2.5 rounded-lg text-white text-sm tracking-wider border-none outline-none bg-green-600 hover:bg-green-700 hover:cursor-pointer active:bg-green-600">
+            class="mb-4 inline-block px-5 py-2.5 rounded-lg text-white text-md tracking-wider border-none outline-none bg-green-600 hover:bg-green-700 hover:cursor-pointer active:bg-green-600">
             Добави нов филм
         </a>
-        <div class="flex gap-2 flex-wrap">
+        <div class="flex gap-2 flex-wrap justify-center">
             @foreach ($movies as $movie)
                 <div
                     class="bg-white shadow-[0_4px_12px_-5px_rgba(0,0,0,0.4)] w-full max-w-sm rounded-lg overflow-hidden font-[sans-serif]">

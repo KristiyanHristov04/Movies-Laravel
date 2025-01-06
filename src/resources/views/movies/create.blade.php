@@ -53,7 +53,7 @@
             @enderror
         </div>
         <button type="submit"
-            class="mb-4 inline-block px-5 py-2.5 rounded-lg text-white text-sm tracking-wider border-none outline-none bg-green-600 hover:bg-green-700 hover:cursor-pointer active:bg-green-600">Добави
+            class="mb-4 inline-block px-5 py-2.5 rounded-lg text-white text-md tracking-wider border-none outline-none bg-green-600 hover:bg-green-700 hover:cursor-pointer active:bg-green-600">Добави
             филм</button>
     </form>
 @endsection

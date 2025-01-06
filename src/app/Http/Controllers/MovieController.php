@@ -51,6 +51,6 @@ class MovieController extends Controller
             'image_path' => $filePath,
         ]);
 
-        return redirect()->route('movies.index')->with('success', 'Movie created successfully!');
+        return redirect()->route('movies.index')->with('success', 'Филмът беше създаден успешно!');
     }
 }
