@@ -9,10 +9,12 @@
         @session('error')
             @include('shared.partials.error-message')
         @endsession
-        <a href="{{ route('movies.create') }}"
-            class="mb-4 inline-block px-5 py-2.5 rounded-lg text-white text-md tracking-wider border-none outline-none bg-green-600 hover:bg-green-700 hover:cursor-pointer active:bg-green-600">
-            Добави нов филм
-        </a>
+        <div class="text-center">
+            <a href="{{ route('movies.create') }}"
+                class="mb-4 mt-4 inline-block px-5 py-2.5 rounded-lg text-white text-md tracking-wider border-none outline-none bg-green-600 hover:bg-green-700 hover:cursor-pointer active:bg-green-600">
+                Добави нов филм
+            </a>
+        </div>
         <div class="flex gap-2 flex-wrap justify-center">
             @foreach ($movies as $movie)
                 <div

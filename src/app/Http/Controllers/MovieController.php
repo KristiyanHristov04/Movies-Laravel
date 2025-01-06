@@ -23,9 +23,9 @@ class MovieController extends Controller
 
         if ($sortByYear) {
             if ($sortByYear === 'newest') {
-                $query->orderBy('year', 'asc');
-            } else if ($sortByYear === 'oldest') {
                 $query->orderBy('year', 'desc');
+            } else if ($sortByYear === 'oldest') {
+                $query->orderBy('year', 'asc');
             }
         }
 
