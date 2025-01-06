@@ -53,4 +53,11 @@ class MovieController extends Controller
 
         return redirect()->route('movies.index')->with('success', 'Филмът беше създаден успешно!');
     }
+
+    public function destroy($id) {
+        $movie = Movie::find($id);
+        $movie->delete();
+        
+        return redirect()->route('movies.index')->with('success', 'Филмът беше изтрит успешно!');
+    }
 }

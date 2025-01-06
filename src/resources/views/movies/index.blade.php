@@ -32,18 +32,23 @@
                         <p class="mt-4 text-sm text-gray-500 leading-relaxed">
                             Език: {{ $movie->language }}
                         </p>
-                        <button type="button"
-                            class="mt-6 px-5 py-2.5 rounded-lg text-white text-sm tracking-wider border-none outline-none bg-cyan-600 hover:bg-cyan-700 active:bg-cyan-600">
+                        <a type="button"
+                            class="inline-block mt-6 px-5 py-2.5 rounded-lg text-white text-sm tracking-wider border-none outline-none bg-cyan-600 hover:bg-cyan-700 hover:cursor-pointer active:bg-cyan-600">
                             Преглед
-                        </button>
-                        <button type="button"
-                            class="mt-6 px-5 py-2.5 rounded-lg text-white text-sm tracking-wider border-none outline-none bg-orange-600 hover:bg-orange-700 active:bg-orange-600">
+                        </a>
+                        <a type="button"
+                            class="inline-block mt-6 px-5 py-2.5 rounded-lg text-white text-sm tracking-wider border-none outline-none bg-orange-600 hover:bg-orange-700 hover:cursor-pointer active:bg-orange-600">
                             Редактирай
-                        </button>
-                        <button type="button"
-                            class="mt-6 px-5 py-2.5 rounded-lg text-white text-sm tracking-wider border-none outline-none bg-red-600 hover:bg-red-700 active:bg-red-600">
-                            Изтрий
-                        </button>
+                        </a>
+                        <form action="{{ route('movies.delete', $movie->id) }}" method="POST">
+                            @csrf
+                            @method('delete')
+                            <button type="submit"
+                                class="inline-block mt-6 px-5 py-2.5 rounded-lg text-white text-sm tracking-wider border-none outline-none bg-red-600 hover:bg-red-700 hover:cursor-pointer active:bg-red-600">
+                                Изтрий
+                            </button>
+                        </form>
+
                     </div>
                 </div>
                 {{-- <li>

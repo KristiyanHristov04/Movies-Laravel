@@ -1,4 +1,4 @@
-<div class="flex items-start max-sm:flex-col bg-green-100 text-green-800 p-4 rounded-lg relative" role="alert">
+<div class="flex items-start max-sm:flex-col bg-green-100 text-green-800 p-4 my-4 rounded-lg relative" role="alert">
     <div class="flex items-center max-sm:mb-2">
         <svg xmlns="http://www.w3.org/2000/svg" class="w-[18px] fill-green-500 inline mr-3" viewBox="0 0 512 512">
             <ellipse cx="256" cy="256" fill="#32bea6" data-original="#32bea6" rx="256" ry="255.832" />
