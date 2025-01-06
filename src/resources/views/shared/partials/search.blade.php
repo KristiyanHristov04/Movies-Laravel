@@ -1,7 +1,7 @@
 <form action="{{ route('movies.index') }}" method="GET">
     <div
         class='flex max-w-xs w-full bg-gray-100 px-4 py-2 rounded outline outline-transparent border focus-within:border-blue-600 focus-within:bg-transparent transition-all'>
-        <input type='text' name="search" placeholder='Търсене на филм..'
+        <input type='text' name="search" value="{{ request('search') }}" placeholder='Търсене на филм..'
             class='w-full text-sm bg-transparent rounded outline-none pr-2' />
         <button>
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192.904 192.904" width="16px"
