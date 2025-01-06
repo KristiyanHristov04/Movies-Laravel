@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\MovieController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('movies.index');
-});
+Route::get('/', [MovieController::class, 'index'])->name('movies.index');
+Route::get('/movies/create', [MovieController::class, 'create'])->name('movies.create');
+
+Route::post('/movies/create', [MovieController::class, 'store'])->name('movies.store');

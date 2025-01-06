@@ -1,7 +1,7 @@
 <header class='flex border-b py-3 px-4 sm:px-10 bg-white font-[sans-serif] min-h-[65px] tracking-wide relative z-50'>
     <div class='flex flex-wrap items-center gap-4 max-w-screen-xl mx-auto w-full'>
-        <a href="/" class="max-sm:hidden">FilmVusion</a>
-        <a href="/" class="hidden max-sm:block">FilmVusion</a>
+        <a href="{{ route('movies.index') }}" class="max-sm:hidden">FilmVusion</a>
+        <a href="{{ route('movies.index') }}" class="hidden max-sm:block">FilmVusion</a>
 
         <div id="collapseMenu"
             class='max-lg:hidden lg:!block max-lg:w-full max-lg:fixed max-lg:before:fixed max-lg:before:bg-black max-lg:before:opacity-50 max-lg:before:inset-0 max-lg:before:z-50'>
@@ -20,14 +20,14 @@
             <ul
                 class='lg:flex lg:ml-14 lg:gap-x-5 max-lg:space-y-3 max-lg:fixed max-lg:bg-white max-lg:w-1/2 max-lg:min-w-[300px] max-lg:top-0 max-lg:left-0 max-lg:p-6 max-lg:h-full max-lg:shadow-md max-lg:overflow-auto z-50'>
                 <li class='mb-6 hidden max-lg:block'>
-                    <a href="/">FilmVusion</a>
+                    <a href="{{ route('movies.index') }}">FilmVusion</a>
                 </li>
                 <li class='max-lg:border-b max-lg:py-3 px-3'>
-                    <a href='/' class='lg:hover:text-[#007bff] block text-[15px]'>Начало
+                    <a href='{{ route('movies.index') }}' class='lg:hover:text-[#007bff] block text-[15px]'>Начало
                     </a>
                 </li>
                 <li class='max-lg:border-b max-lg:py-3 px-3'>
-                    <a href='/movies' class='lg:hover:text-[#007bff] block text-[15px]'>Филми
+                    <a href='{{ route('movies.index') }}' class='lg:hover:text-[#007bff] block text-[15px]'>Филми
                     </a>
                 </li>
             </ul>
