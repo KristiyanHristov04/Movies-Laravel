@@ -36,7 +36,7 @@
                             class="inline-block mt-6 px-5 py-2.5 rounded-lg text-white text-sm tracking-wider border-none outline-none bg-cyan-600 hover:bg-cyan-700 hover:cursor-pointer active:bg-cyan-600">
                             Преглед
                         </a>
-                        <a type="button"
+                        <a href="{{ route('movies.edit', $movie->id) }}" type="button"
                             class="inline-block mt-6 px-5 py-2.5 rounded-lg text-white text-sm tracking-wider border-none outline-none bg-orange-600 hover:bg-orange-700 hover:cursor-pointer active:bg-orange-600">
                             Редактирай
                         </a>

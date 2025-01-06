@@ -13,7 +13,8 @@ class MovieController extends Controller
         return view('movies.index', ["movies" => $movies]);
     }
 
-    public function show($id) {
+    public function show($id)
+    {
         $movie = Movie::find($id);
         return view('movies.show', ["movie" => $movie]);
     }
@@ -58,6 +59,55 @@ class MovieController extends Controller
         ]);
 
         return redirect()->route('movies.index')->with('success', 'Филмът беше създаден успешно!');
+    }
+
+    public function edit($id)
+    {
+        $movie = Movie::find($id);
+        return view('movies.edit', ["movie" => $movie]);
+    }
+
+    public function update($id, Request $request)
+    {
+        $request->validate([
+            'movieName' => 'required|max:100',
+            'year' => 'required',
+            'director' => 'required|max:100',
+            'genre' => 'required|max:60',
+            'language' => 'required|max:60',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:3096',
+        ], [
+            "movieName.required" => "Моля, въведете име на филма.",
+            "movieName.max" => "Името на филма не трябва да надвишава 100 символа.",
+            "year.required" => "Моля, въведете година на издаване на филма.",
+            "director.required" => "Моля, въведете режисьор на филма.",
+            "director.max" => "Името на режисьора не трябва да надвишава 100 символа.",
+            "genre.required" => "Моля, въведете жанр на филма.",
+            "genre.max" => "Името на жанра не трябва да надвишава 60 символа.",
+            "language.required" => "Моля, въведете език на филма.",
+            "language.max" => "Името на езика не трябва да надвишава 60 символа.",
+            "image.required" => "Моля, прикачете снимка на филма.",
+            "image.image" => "Невалиден файлов формат. Валидни файлови формати: jpeg,png,jpg,gif",
+        ]);
+
+        $movie = Movie::find($id);
+        $movie->movie_name = $request->movieName;
+        $movie->year = $request->year;
+        $movie->director = $request->director;
+        $movie->genre = $request->genre;
+        $movie->language = $request->language;
+
+        $imagePath = public_path('storage/' . $movie->image_path);
+        if (file_exists($imagePath)) {
+            unlink($imagePath);
+        }
+
+        $filePath = $request->file('image')->store('images', 'public');
+        $movie->image_path = $filePath;
+
+        $movie->save();
+
+        return redirect()->route('movies.index')->with('success', 'Филмът беше редактиран успешно!');
     }
 
     public function destroy($id)
