@@ -32,7 +32,7 @@
                         <p class="mt-4 text-sm text-gray-500 leading-relaxed">
                             Език: {{ $movie->language }}
                         </p>
-                        <a type="button"
+                        <a href="{{ route('movies.show', $movie->id) }}" type="button"
                             class="inline-block mt-6 px-5 py-2.5 rounded-lg text-white text-sm tracking-wider border-none outline-none bg-cyan-600 hover:bg-cyan-700 hover:cursor-pointer active:bg-cyan-600">
                             Преглед
                         </a>
@@ -51,13 +51,6 @@
 
                     </div>
                 </div>
-                {{-- <li>
-                <h2>{{ $movie->movie_name }} ({{ $movie->year }})</h2>
-                <p>Director: {{ $movie->director }}</p>
-                <p>Genre: {{ $movie->genre }}</p>
-                <p>Language: {{ $movie->language }}</p>
-                <img src="{{ asset('storage/' . $movie->image_path) }}" alt="{{ $movie->movie_name }}" width="100">
-            </li> --}}
             @endforeach
         </div>
     </div>
