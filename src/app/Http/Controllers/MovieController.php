@@ -22,9 +22,9 @@ class MovieController extends Controller
         }
 
         if ($sortByYear) {
-            if ($sortByYear === 'asc') {
+            if ($sortByYear === 'newest') {
                 $query->orderBy('year', 'asc');
-            } else if ($sortByYear === 'desc') {
+            } else if ($sortByYear === 'oldest') {
                 $query->orderBy('year', 'desc');
             }
         }

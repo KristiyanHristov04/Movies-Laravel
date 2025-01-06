@@ -58,6 +58,6 @@
         </div>
     </div>
     <div class="fixed bottom-[60px] w-[100%] px-5">
-        {{ $movies->links() }}
+        {{ $movies->links('pagination::tailwind') }}
     </div>
 @endsection
