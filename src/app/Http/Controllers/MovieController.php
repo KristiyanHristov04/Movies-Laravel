@@ -45,6 +45,7 @@ class MovieController extends Controller
             "language.max" => "Името на езика не трябва да надвишава 60 символа.",
             "image.required" => "Моля, прикачете снимка на филма.",
             "image.image" => "Невалиден файлов формат. Валидни файлови формати: jpeg,png,jpg,gif",
+            "image.max" => "Файлът не трябва да надвишава 3 MB."
         ]);
 
         $filePath = $request->file('image')->store('images', 'public');
@@ -88,6 +89,7 @@ class MovieController extends Controller
             "language.max" => "Името на езика не трябва да надвишава 60 символа.",
             "image.required" => "Моля, прикачете снимка на филма.",
             "image.image" => "Невалиден файлов формат. Валидни файлови формати: jpeg,png,jpg,gif",
+            "image.max" => "Файлът не трябва да надвишава 3 MB."
         ]);
 
         $movie = Movie::find($id);
