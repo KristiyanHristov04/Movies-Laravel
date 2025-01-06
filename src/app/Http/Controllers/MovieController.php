@@ -7,9 +7,20 @@ use Illuminate\Http\Request;
 
 class MovieController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $movies = Movie::paginate(1);
+        $search = $request->get('search');
+        $query = Movie::query();
+        if ($search) {
+            $query->where(function ($q) use ($search) {
+                $q->where('movie_name', 'like', '%' . $search . '%')
+                  ->orWhere('director', 'like', '%' . $search . '%')
+                  ->orWhere('year', 'like', '%' . $search . '%')
+                  ->orWhere('genre', 'like', '%' . $search . '%');
+            });
+        }
+        
+        $movies = $query->paginate(1)->appends(['search' => $search]);
         return view('movies.index', ["movies" => $movies]);
     }
 

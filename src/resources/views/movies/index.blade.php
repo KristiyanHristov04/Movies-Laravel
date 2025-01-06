@@ -57,5 +57,7 @@
             @endforeach
         </div>
     </div>
-    {{ $movies->links() }}
+    <div class="fixed bottom-[60px] w-[100%] px-5">
+        {{ $movies->links() }}
+    </div>
 @endsection

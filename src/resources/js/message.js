@@ -1,4 +1,7 @@
 const message = document.getElementById('message');
-message.addEventListener('click', () => {
-    message.remove();
-});
+if (message) {
+    message.addEventListener('click', () => {
+        message.remove();
+    });
+}
+
