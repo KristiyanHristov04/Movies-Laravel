@@ -7,7 +7,8 @@ use Illuminate\Http\Request;
 
 class MovieController extends Controller
 {
-    public function index() {
+    public function index()
+    {
         $movies = Movie::all();
         return view('movies.index', ["movies" => $movies]);
     }
@@ -54,10 +55,19 @@ class MovieController extends Controller
         return redirect()->route('movies.index')->with('success', 'Филмът беше създаден успешно!');
     }
 
-    public function destroy($id) {
+    public function destroy($id)
+    {
         $movie = Movie::find($id);
-        $movie->delete();
-        
+
+        if ($movie) {
+            $imagePath = public_path('storage/' . $movie->image_path);
+            if (file_exists($imagePath)) {
+                unlink($imagePath);
+            }
+
+            $movie->delete();
+        }
+
         return redirect()->route('movies.index')->with('success', 'Филмът беше изтрит успешно!');
     }
 }
