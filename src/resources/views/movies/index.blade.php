@@ -37,23 +37,28 @@
                         <p class="mt-4 text-sm text-gray-500 leading-relaxed">
                             Език: {{ $movie->language }}
                         </p>
+                        <a href="{{ route('movies.show', $movie->id) }}" type="button"
+                            class="inline-block mt-6 px-5 py-2.5 rounded-lg text-white text-sm tracking-wider border-none outline-none bg-cyan-600 hover:bg-cyan-700 hover:cursor-pointer active:bg-cyan-600">
+                            Преглед
+                        </a>
                         @if (Auth::user())
-                            <a href="{{ route('movies.show', $movie->id) }}" type="button"
-                                class="inline-block mt-6 px-5 py-2.5 rounded-lg text-white text-sm tracking-wider border-none outline-none bg-cyan-600 hover:bg-cyan-700 hover:cursor-pointer active:bg-cyan-600">
-                                Преглед
-                            </a>
-                            <a href="{{ route('movies.edit', $movie->id) }}" type="button"
-                                class="inline-block mt-6 px-5 py-2.5 rounded-lg text-white text-sm tracking-wider border-none outline-none bg-orange-600 hover:bg-orange-700 hover:cursor-pointer active:bg-orange-600">
-                                Редактирай
-                            </a>
-                            <form action="{{ route('movies.delete', $movie->id) }}" method="POST">
-                                @csrf
-                                @method('delete')
-                                <button type="submit"
-                                    class="inline-block mt-6 px-5 py-2.5 rounded-lg text-white text-sm tracking-wider border-none outline-none bg-red-600 hover:bg-red-700 hover:cursor-pointer active:bg-red-600">
-                                    Изтрий
-                                </button>
-                            </form>
+                            @if (Auth::user()->id == $movie->user_id)
+                                <a href="{{ route('movies.edit', $movie->id) }}" type="button"
+                                    class="inline-block mt-6 px-5 py-2.5 rounded-lg text-white text-sm tracking-wider border-none outline-none bg-orange-600 hover:bg-orange-700 hover:cursor-pointer active:bg-orange-600">
+                                    Редактирай
+                                </a>
+                            @endif
+
+                            @if (Auth::id() == $movie->user_id)
+                                <form action="{{ route('movies.delete', $movie->id) }}" method="POST">
+                                    @csrf
+                                    @method('delete')
+                                    <button type="submit"
+                                        class="inline-block mt-6 px-5 py-2.5 rounded-lg text-white text-sm tracking-wider border-none outline-none bg-red-600 hover:bg-red-700 hover:cursor-pointer active:bg-red-600">
+                                        Изтрий
+                                    </button>
+                                </form>
+                            @endif
                         @endif
                     </div>
                 </div>

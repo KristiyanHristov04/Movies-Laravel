@@ -94,6 +94,11 @@ class MovieController extends Controller
         if (!$movie) {
             return redirect()->route('movies.index')->with('error', 'Не съществува такъв ресурс!');
         }
+
+        if (Auth::user()->id != $movie->user_id) {
+            return redirect()->route('movies.index')->with('error', 'Нямате достъп до този ресурс!');
+        }
+        
         return view('movies.edit', ["movie" => $movie]);
     }
 
