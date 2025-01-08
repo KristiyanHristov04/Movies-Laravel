@@ -28,7 +28,7 @@
                             @if (Auth::user()->id == $movie->user_id)
                                 <a href="{{ route('movies.edit', $movie->id) }}" type="button"
                                     class="inline-block mt-6 px-5 py-2.5 rounded-lg text-white text-sm tracking-wider border-none outline-none bg-orange-600 hover:bg-orange-700 hover:cursor-pointer active:bg-orange-600">
-                                    Редактирай
+                                    Редактиране
                                 </a>
                             @endif
 
@@ -38,7 +38,7 @@
                                     @method('delete')
                                     <button type="submit"
                                         class="inline-block mt-6 px-5 py-2.5 rounded-lg text-white text-sm tracking-wider border-none outline-none bg-red-600 hover:bg-red-700 hover:cursor-pointer active:bg-red-600">
-                                        Изтрий
+                                        Изтриване
                                     </button>
                                 </form>
                             @endif

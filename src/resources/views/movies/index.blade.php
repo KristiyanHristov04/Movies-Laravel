@@ -12,7 +12,7 @@
         <div class="text-center">
             <a href="{{ route('movies.create') }}"
                 class="mb-4 mt-4 inline-block px-5 py-2.5 rounded-lg text-white text-md tracking-wider border-none outline-none bg-green-600 hover:bg-green-700 hover:cursor-pointer active:bg-green-600">
-                Добави нов филм
+                Добавяне на филм
             </a>
         </div>
         <div class="flex gap-2 flex-wrap justify-center">
@@ -48,7 +48,7 @@
                                 @if (Auth::user()->id == $movie->user_id)
                                     <a href="{{ route('movies.edit', $movie->id) }}" type="button"
                                         class="inline-block mt-6 px-5 py-2.5 rounded-lg text-white text-sm tracking-wider border-none outline-none bg-orange-600 hover:bg-orange-700 hover:cursor-pointer active:bg-orange-600">
-                                        Редактирай
+                                        Редактиране
                                     </a>
                                 @endif
 
@@ -58,7 +58,7 @@
                                         @method('delete')
                                         <button type="submit"
                                             class="inline-block mt-6 px-5 py-2.5 rounded-lg text-white text-sm tracking-wider border-none outline-none bg-red-600 hover:bg-red-700 hover:cursor-pointer active:bg-red-600">
-                                            Изтрий
+                                            Изтриване
                                         </button>
                                     </form>
                                 @endif
