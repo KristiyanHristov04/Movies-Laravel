@@ -10,7 +10,11 @@
 </head>
 
 <body>
-    @include('shared.partials.header')
+    {{-- @include('shared.partials.header') --}}
+    {{-- @if (Auth::user())
+        @include('layouts.navigation')
+    @endif --}}
+    @include('layouts.navigation')
     <div class="mb-16">
         @yield('content')
     </div>
