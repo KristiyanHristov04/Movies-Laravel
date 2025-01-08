@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Movie;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class MovieController extends Controller
 {
@@ -73,6 +74,7 @@ class MovieController extends Controller
 
         $filePath = $request->file('image')->store('images', 'public');
 
+        
         Movie::create([
             'movie_name' => $request->movieName,
             'year' => $request->year,
@@ -80,6 +82,7 @@ class MovieController extends Controller
             'genre' => $request->genre,
             'language' => $request->language,
             'image_path' => $filePath,
+            'user_id' => Auth::id()
         ]);
 
         return redirect()->route('movies.index')->with('success', 'Филмът беше създаден успешно!');

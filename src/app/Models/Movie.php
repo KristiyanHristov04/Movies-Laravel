@@ -13,5 +13,10 @@ class Movie extends Model
         'genre',
         'language',
         'image_path',
+        'user_id'
     ];
+
+    public function user() {
+        return $this->belongsTo(User::class);
+    }
 }
