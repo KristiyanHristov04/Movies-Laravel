@@ -38,7 +38,7 @@ class MovieController extends Controller
     {
         $movie = Movie::find($id);
         if (!$movie) {
-            return redirect()->route('movies.index')->with('error', 'Не съществува такъв ресурс!');
+            return redirect()->route('movies.index')->with('error', 'Не съществува такъв ресурс!1');
         }
         return view('movies.show', ["movie" => $movie]);
     }
@@ -98,7 +98,7 @@ class MovieController extends Controller
         if (Auth::user()->id != $movie->user_id) {
             return redirect()->route('movies.index')->with('error', 'Нямате достъп до този ресурс!');
         }
-        
+
         return view('movies.edit', ["movie" => $movie]);
     }
 

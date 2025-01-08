@@ -15,8 +15,8 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::get('/', [MovieController::class, 'index'])->name('movies.index');
-Route::get('/movies/{id}', [MovieController::class, 'show'])->name('movies.show');
 Route::get('/movies/create', [MovieController::class, 'create'])->name('movies.create')->middleware('auth');
+Route::get('/movies/{id}', [MovieController::class, 'show'])->name('movies.show');
 Route::get('/movies/{id}/edit', [MovieController::class, 'edit'])->name('movies.edit')->middleware('auth');
 
 Route::post('/movies/create', [MovieController::class, 'store'])->name('movies.store')->middleware('auth');
