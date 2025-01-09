@@ -131,20 +131,20 @@ class MovieController extends Controller
         $request->validate([
             'movieName' => 'required|max:100',
             'year' => 'required',
-            'director' => 'required|max:100',
-            'genre' => 'required|max:60',
-            'language' => 'required|max:60',
+            'director_id' => 'required|exists:directors,id',
+            'genre_id' => 'required|exists:genres,id',
+            'language_id' => 'required|exists:languages,id',
             'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:3096',
         ], [
             "movieName.required" => "Моля, въведете име на филма.",
             "movieName.max" => "Името на филма не трябва да надвишава 100 символа.",
             "year.required" => "Моля, въведете година на издаване на филма.",
-            "director.required" => "Моля, въведете режисьор на филма.",
-            "director.max" => "Името на режисьора не трябва да надвишава 100 символа.",
-            "genre.required" => "Моля, въведете жанр на филма.",
-            "genre.max" => "Името на жанра не трябва да надвишава 60 символа.",
-            "language.required" => "Моля, въведете език на филма.",
-            "language.max" => "Името на езика не трябва да надвишава 60 символа.",
+            "director_id.required" => "Моля, изберете режисьор.",
+            "director_id.exists" => "Избраният от вас режисьор не съществува.",
+            "genre_id.required" => "Моля, изберете жанр.",
+            "genre_id.exists" => "Избраният от вас жанр не съществува.",
+            "language_id.required" => "Моля, изберете език.",
+            "language_id.exists" => "Избраният от вас език не съществува.",
             "image.required" => "Моля, прикачете снимка на филма.",
             "image.image" => "Невалиден файлов формат. Валидни файлови формати: jpeg,png,jpg,gif",
             "image.max" => "Файлът не трябва да надвишава 3 MB."
@@ -153,9 +153,9 @@ class MovieController extends Controller
         $movie = Movie::find($id);
         $movie->movie_name = $request->movieName;
         $movie->year = $request->year;
-        $movie->director = $request->director;
-        $movie->genre = $request->genre;
-        $movie->language = $request->language;
+        $movie->director_id = $request->director_id;
+        $movie->genre_id = $request->genre_id;
+        $movie->language_id = $request->language_id;
 
         $imagePath = public_path('storage/' . $movie->image_path);
         if (file_exists($imagePath)) {

@@ -50,11 +50,17 @@
                 <span class="text-red-500">{{ $message }}</span>
             @enderror
         </div>
-        <div>
-            <label class="mb-2 text-lg block" id="language">Език:</label>
-            <input type='text' value="{{ $movie->language }}" id="language" name="language"
-                class="px-4 py-2.5 text-md rounded-md bg-white border border-gray-400 w-full outline-blue-500" />
-            @error('language')
+        <div class="mb-3">
+            <label for="language_id" class="form-label mb-[8px] block">Жанр:</label>
+            <select name="language_id" id="language_id" class="form-control cursor-pointer w-[100%] rounded-md px-4 py-[10px]"
+                style="border-color: rgb(156 163 175);">
+                <option value="">Изберете език</option>
+                @foreach ($languages as $language)
+                    <option {{ $movie->language_id == $language->id ? 'selected' : '' }} value="{{ $language->id }}">
+                        {{ $language->language_name }}</option>
+                @endforeach
+            </select>
+            @error('language_id')
                 <span class="text-red-500">{{ $message }}</span>
             @enderror
         </div>
