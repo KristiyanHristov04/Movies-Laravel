@@ -29,8 +29,8 @@
             @enderror
         </div>
         <div class="mb-3">
-            <label for="genre_id" class="form-label">Жанр:</label>
-            <select name="genre_id" id="genre_id" class="form-control">
+            <label for="genre_id" class="form-label mb-[8px] block">Жанр:</label>
+            <select name="genre_id" id="genre_id" class="form-control cursor-pointer w-[100%] rounded-md px-4 py-[10px]" style="border-color: rgb(156 163 175);">
                 <option value="">Изберете жанр</option>
                 @foreach ($genres as $genre)
                     <option value="{{ $genre->id }}">{{ $genre->name }}</option>
