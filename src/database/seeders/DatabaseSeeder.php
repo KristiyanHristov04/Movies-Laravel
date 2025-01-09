@@ -14,6 +14,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
+
         $languages = [
             'Afrikaans',
             'Albanian',
@@ -124,5 +125,6 @@ class DatabaseSeeder extends Seeder
         foreach ($languages as $language) {
             Language::firstOrCreate(['language_name' => $language]);
         }
+        
     }
 }

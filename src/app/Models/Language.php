@@ -9,4 +9,6 @@ class Language extends Model
     protected $fillable = [
         'language_name'
     ];
+
+    public $timestamps = false;
 }
