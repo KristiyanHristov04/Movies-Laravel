@@ -19,13 +19,15 @@ class MovieController extends Controller
         if ($search) {
             $query->where(function ($q) use ($search) {
                 $q->where('movie_name', 'like', '%' . $search . '%')
-                    ->orWhere('year', 'like', '%' . $search . '%')
+                    ->orWhereHas('language', function ($q) use ($search) {
+                        $q->where('language_name', 'like', '%' . $search . '%');
+                    })
                     ->orWhereHas('genre', function ($q) use ($search) {
                         $q->where('name', 'like', '%' . $search . '%');
                     })
                     ->orWhereHas('director', function ($q) use ($search) {
                         $q->where('first_name', 'like', '%' . $search . '%')
-                        ->orWhere('last_name', 'like', '%' . $search . '%');
+                            ->orWhere('last_name', 'like', '%' . $search . '%');
                     });
             });
         }
@@ -117,8 +119,8 @@ class MovieController extends Controller
         $directors = Director::all();
         $languages = Language::all();
         return view('movies.edit', [
-            "movie" => $movie, 
-            "genres" => $genres, 
+            "movie" => $movie,
+            "genres" => $genres,
             "directors" => $directors,
             "languages" => $languages
         ]);
