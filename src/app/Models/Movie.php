@@ -9,11 +9,11 @@ class Movie extends Model
     protected $fillable = [
         'movie_name',
         'year',
-        'language',
         'image_path',
         'user_id',
         'genre_id',
-        'director_id'
+        'director_id',
+        'language_id'
     ];
 
     public function user() {
@@ -26,5 +26,9 @@ class Movie extends Model
 
     public function genre() {
         return $this->belongsTo(Genre::class);
+    }
+
+    public function language() {
+        return $this->belongsTo(Language::class);
     }
 }

@@ -70,7 +70,7 @@ class MovieController extends Controller
             'year' => 'required',
             'director_id' => 'required|exists:directors,id',
             'genre_id' => 'required|exists:genres,id',
-            'language_id' => 'required|exists:genres,id',
+            'language_id' => 'required|exists:languages,id',
             'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:3096',
         ], [
             "movieName.required" => "Моля, въведете име на филма.",
@@ -89,7 +89,6 @@ class MovieController extends Controller
 
         $filePath = $request->file('image')->store('images', 'public');
 
-        
         Movie::create([
             'movie_name' => $request->movieName,
             'year' => $request->year,

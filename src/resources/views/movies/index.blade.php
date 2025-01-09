@@ -36,7 +36,7 @@
                                 Жанр: {{ $movie->genre->name }}
                             </p>
                             <p class="mt-4 text-sm text-gray-500 leading-relaxed">
-                                Език: {{ $movie->language }}
+                                Език: {{ $movie->language->language_name }}
                             </p>
                         </div>
                         <div class="flex gap-[10px] justify-center">
