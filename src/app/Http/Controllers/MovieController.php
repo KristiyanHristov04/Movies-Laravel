@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Genre;
 use App\Models\Movie;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -45,7 +46,8 @@ class MovieController extends Controller
 
     public function create()
     {
-        return view('movies.create');
+        $genres = Genre::all();
+        return view('movies.create', ["genres" => $genres]);
     }
 
     public function store(Request $request)
@@ -54,7 +56,7 @@ class MovieController extends Controller
             'movieName' => 'required|max:100',
             'year' => 'required',
             'director' => 'required|max:100',
-            'genre' => 'required|max:60',
+            'genre_id' => 'required|exists:genres,id',
             'language' => 'required|max:60',
             'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:3096',
         ], [
@@ -63,8 +65,8 @@ class MovieController extends Controller
             "year.required" => "Моля, въведете година на издаване на филма.",
             "director.required" => "Моля, въведете режисьор на филма.",
             "director.max" => "Името на режисьора не трябва да надвишава 100 символа.",
-            "genre.required" => "Моля, въведете жанр на филма.",
-            "genre.max" => "Името на жанра не трябва да надвишава 60 символа.",
+            "genre_id.required" => "Моля, изберете жанр.",
+            "genre_id.exists" => "Избраният от вас жанр не съществува.",
             "language.required" => "Моля, въведете език на филма.",
             "language.max" => "Името на езика не трябва да надвишава 60 символа.",
             "image.required" => "Моля, прикачете снимка на филма.",
@@ -79,10 +81,10 @@ class MovieController extends Controller
             'movie_name' => $request->movieName,
             'year' => $request->year,
             'director' => $request->director,
-            'genre' => $request->genre,
             'language' => $request->language,
             'image_path' => $filePath,
-            'user_id' => Auth::id()
+            'user_id' => Auth::id(),
+            'genre_id' => $request->genre_id
         ]);
 
         return redirect()->route('movies.index')->with('success', 'Филмът беше създаден успешно!');

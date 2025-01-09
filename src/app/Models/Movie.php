@@ -10,10 +10,10 @@ class Movie extends Model
         'movie_name',
         'year',
         'director',
-        'genre',
         'language',
         'image_path',
-        'user_id'
+        'user_id',
+        'genre_id'
     ];
 
     public function user() {
