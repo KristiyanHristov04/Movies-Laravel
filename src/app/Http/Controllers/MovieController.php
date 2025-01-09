@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Director;
 use App\Models\Genre;
+use App\Models\Language;
 use App\Models\Movie;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -54,7 +55,12 @@ class MovieController extends Controller
     {
         $genres = Genre::all();
         $directors = Director::all();
-        return view('movies.create', ["genres" => $genres, "directors" => $directors]);
+        $languages = Language::all();
+        return view('movies.create', [
+            "genres" => $genres,
+            "directors" => $directors,
+            "languages" => $languages
+        ]);
     }
 
     public function store(Request $request)
@@ -64,7 +70,7 @@ class MovieController extends Controller
             'year' => 'required',
             'director_id' => 'required|exists:directors,id',
             'genre_id' => 'required|exists:genres,id',
-            'language' => 'required|max:60',
+            'language_id' => 'required|exists:genres,id',
             'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:3096',
         ], [
             "movieName.required" => "Моля, въведете име на филма.",
@@ -74,8 +80,8 @@ class MovieController extends Controller
             "director_id.exists" => "Избраният от вас режисьор не съществува.",
             "genre_id.required" => "Моля, изберете жанр.",
             "genre_id.exists" => "Избраният от вас жанр не съществува.",
-            "language.required" => "Моля, въведете език на филма.",
-            "language.max" => "Името на езика не трябва да надвишава 60 символа.",
+            "language_id.required" => "Моля, изберете език.",
+            "language_id.exists" => "Избраният от вас език не съществува.",
             "image.required" => "Моля, прикачете снимка на филма.",
             "image.image" => "Невалиден файлов формат. Валидни файлови формати: jpeg,png,jpg,gif",
             "image.max" => "Файлът не трябва да надвишава 3 MB."
@@ -87,11 +93,11 @@ class MovieController extends Controller
         Movie::create([
             'movie_name' => $request->movieName,
             'year' => $request->year,
-            'language' => $request->language,
             'image_path' => $filePath,
             'user_id' => Auth::id(),
             'genre_id' => $request->genre_id,
-            'director_id' => $request->director_id
+            'director_id' => $request->director_id,
+            'language_id' => $request->language_id
         ]);
 
         return redirect()->route('movies.index')->with('success', 'Филмът беше създаден успешно!');
@@ -110,7 +116,13 @@ class MovieController extends Controller
 
         $genres = Genre::all();
         $directors = Director::all();
-        return view('movies.edit', ["movie" => $movie, "genres" => $genres, "directors" => $directors]);
+        $languages = Language::all();
+        return view('movies.edit', [
+            "movie" => $movie, 
+            "genres" => $genres, 
+            "directors" => $directors,
+            "languages" => $languages
+        ]);
     }
 
     public function update($id, Request $request)

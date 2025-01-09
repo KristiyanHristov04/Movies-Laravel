@@ -22,10 +22,13 @@
         </div>
         <div class="mb-3">
             <label for="director_id" class="form-label mb-[8px] block">Режисьор:</label>
-            <select name="director_id" id="director_id" class="form-control cursor-pointer w-[100%] rounded-md px-4 py-[10px]" style="border-color: rgb(156 163 175);">
+            <select name="director_id" id="director_id"
+                class="form-control cursor-pointer w-[100%] rounded-md px-4 py-[10px]"
+                style="border-color: rgb(156 163 175);">
                 <option value="">Изберете режисьор</option>
                 @foreach ($directors as $director)
-                    <option {{ old('director_id') == $director->id ? 'selected' : '' }} value="{{ $director->id }}">{{ $director->first_name . " " . $director->last_name }}</option>
+                    <option {{ old('director_id') == $director->id ? 'selected' : '' }} value="{{ $director->id }}">
+                        {{ $director->first_name . ' ' . $director->last_name }}</option>
                 @endforeach
             </select>
             @error('director_id')
@@ -34,21 +37,30 @@
         </div>
         <div class="mb-3">
             <label for="genre_id" class="form-label mb-[8px] block">Жанр:</label>
-            <select name="genre_id" id="genre_id" class="form-control cursor-pointer w-[100%] rounded-md px-4 py-[10px]" style="border-color: rgb(156 163 175);">
+            <select name="genre_id" id="genre_id" class="form-control cursor-pointer w-[100%] rounded-md px-4 py-[10px]"
+                style="border-color: rgb(156 163 175);">
                 <option value="">Изберете жанр</option>
                 @foreach ($genres as $genre)
-                    <option {{ old('genre_id') == $genre->id ? 'selected' : '' }} value="{{ $genre->id }}">{{ $genre->name }}</option>
+                    <option {{ old('genre_id') == $genre->id ? 'selected' : '' }} value="{{ $genre->id }}">
+                        {{ $genre->name }}</option>
                 @endforeach
             </select>
             @error('genre_id')
                 <span class="text-red-500">{{ $message }}</span>
             @enderror
         </div>
-        <div>
-            <label class="mb-2 text-lg block" id="language">Език:</label>
-            <input type='text' value="{{ old('language') }}" id="language" name="language"
-                class="px-4 py-2.5 text-md rounded-md bg-white border border-gray-400 w-full outline-blue-500" />
-            @error('language')
+        <div class="mb-3">
+            <label for="language_id" class="form-label mb-[8px] block">Език:</label>
+            <select name="language_id" id="language_id"
+                class="form-control cursor-pointer w-[100%] rounded-md px-4 py-[10px]"
+                style="border-color: rgb(156 163 175);">
+                <option value="">Изберете език</option>
+                @foreach ($languages as $language)
+                    <option {{ old('language_id') == $language->id ? 'selected' : '' }} value="{{ $language->id }}">
+                        {{ $language->language_name }}</option>
+                @endforeach
+            </select>
+            @error('language_id')
                 <span class="text-red-500">{{ $message }}</span>
             @enderror
         </div>
