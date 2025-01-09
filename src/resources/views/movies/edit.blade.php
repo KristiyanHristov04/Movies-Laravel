@@ -17,7 +17,7 @@
             <label class="mb-2 text-lg block" id="year">Година на издаване:</label>
             <input type='number' value="{{ $movie->year }}" id="year" name="year"
                 class="px-4 py-2.5 text-md rounded-md bg-white border border-gray-400 w-full outline-blue-500" />
-                @error('year')
+            @error('year')
                 <span class="text-red-500">{{ $message }}</span>
             @enderror
         </div>
@@ -25,15 +25,21 @@
             <label class="mb-2 text-lg block" id="director">Режисьор:</label>
             <input type='text' value="{{ $movie->director }}" id="director" name="director"
                 class="px-4 py-2.5 text-md rounded-md bg-white border border-gray-400 w-full outline-blue-500" />
-                @error('director')
+            @error('director')
                 <span class="text-red-500">{{ $message }}</span>
             @enderror
         </div>
-        <div>
-            <label class="mb-2 text-lg block" id="genre">Жанр:</label>
-            <input type='text' value="{{ $movie->genre }}" id="genre" name="genre"
-                class="px-4 py-2.5 text-md rounded-md bg-white border border-gray-400 w-full outline-blue-500" />
-                @error('genre')
+        <div class="mb-3">
+            <label for="genre_id" class="form-label mb-[8px] block">Жанр:</label>
+            <select name="genre_id" id="genre_id" class="form-control cursor-pointer w-[100%] rounded-md px-4 py-[10px]"
+                style="border-color: rgb(156 163 175);">
+                <option value="">Изберете жанр</option>
+                @foreach ($genres as $genre)
+                    <option {{ $movie->genre_id == $genre->id ? 'selected' : '' }} value="{{ $genre->id }}">
+                        {{ $genre->name }}</option>
+                @endforeach
+            </select>
+            @error('genre_id')
                 <span class="text-red-500">{{ $message }}</span>
             @enderror
         </div>
@@ -41,7 +47,7 @@
             <label class="mb-2 text-lg block" id="language">Език:</label>
             <input type='text' value="{{ $movie->language }}" id="language" name="language"
                 class="px-4 py-2.5 text-md rounded-md bg-white border border-gray-400 w-full outline-blue-500" />
-                @error('language')
+            @error('language')
                 <span class="text-red-500">{{ $message }}</span>
             @enderror
         </div>
@@ -49,12 +55,12 @@
             <label class="mb-2 text-lg block" id="image">Снимка:</label>
             <input type='file' id="image" name="image"
                 class="px-4 py-2.5 text-md rounded-md bg-white border border-gray-400 w-full outline-blue-500" />
-                @error('image')
+            @error('image')
                 <span class="text-red-500">{{ $message }}</span>
             @enderror
         </div>
         <button type="submit"
             class="mb-4 inline-block px-5 py-2.5 rounded-lg text-white text-md tracking-wider border-none outline-none bg-green-600 hover:bg-green-700 hover:cursor-pointer active:bg-green-600">Редактиране
-            </button>
+        </button>
     </form>
 @endsection

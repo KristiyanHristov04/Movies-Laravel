@@ -6,7 +6,7 @@
         @csrf
         <div>
             <label class="mb-2 text-lg block" id="movieName">Име на филм:</label>
-            <input type='text' id="movieName" name="movieName"
+            <input type='text' value="{{ old('movieName') }}" id="movieName" name="movieName"
                 class="px-4 py-2.5 text-md rounded-md bg-white border border-gray-400 w-full outline-blue-500" />
             @error('movieName')
                 <span class="text-red-500">{{ $message }}</span>
@@ -14,7 +14,7 @@
         </div>
         <div>
             <label class="mb-2 text-lg block" id="year">Година на издаване:</label>
-            <input type='number' id="year" name="year"
+            <input type='number' value="{{ old('year') }}" id="year" name="year"
                 class="px-4 py-2.5 text-md rounded-md bg-white border border-gray-400 w-full outline-blue-500" />
             @error('year')
                 <span class="text-red-500">{{ $message }}</span>
@@ -22,7 +22,7 @@
         </div>
         <div>
             <label class="mb-2 text-lg block" id="director">Режисьор:</label>
-            <input type='text' id="director" name="director"
+            <input type='text' value="{{ old('director') }}" id="director" name="director"
                 class="px-4 py-2.5 text-md rounded-md bg-white border border-gray-400 w-full outline-blue-500" />
             @error('director')
                 <span class="text-red-500">{{ $message }}</span>
@@ -33,22 +33,16 @@
             <select name="genre_id" id="genre_id" class="form-control cursor-pointer w-[100%] rounded-md px-4 py-[10px]" style="border-color: rgb(156 163 175);">
                 <option value="">Изберете жанр</option>
                 @foreach ($genres as $genre)
-                    <option value="{{ $genre->id }}">{{ $genre->name }}</option>
+                    <option {{ old('genre_id') == $genre->id ? 'selected' : '' }} value="{{ $genre->id }}">{{ $genre->name }}</option>
                 @endforeach
             </select>
             @error('genre_id')
                 <span class="text-red-500">{{ $message }}</span>
             @enderror
         </div>
-        {{-- <div>
-            <label class="mb-2 text-lg block" id="genre">Жанр:</label>
-            <input type='text' id="genre" name="genre"
-                class="px-4 py-2.5 text-md rounded-md bg-white border border-gray-400 w-full outline-blue-500" />
-            
-        </div> --}}
         <div>
             <label class="mb-2 text-lg block" id="language">Език:</label>
-            <input type='text' id="language" name="language"
+            <input type='text' value="{{ old('language') }}" id="language" name="language"
                 class="px-4 py-2.5 text-md rounded-md bg-white border border-gray-400 w-full outline-blue-500" />
             @error('language')
                 <span class="text-red-500">{{ $message }}</span>

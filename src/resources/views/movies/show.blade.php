@@ -18,7 +18,7 @@
                         Режисьор: {{ $movie->director }}
                     </p>
                     <p class="mt-4 text-sm text-gray-500 leading-relaxed">
-                        Жанр: {{ $movie->genre }}
+                        Жанр: {{ $movie->genre->name }}
                     </p>
                     <p class="mt-4 text-sm text-gray-500 leading-relaxed">
                         Език: {{ $movie->language }}

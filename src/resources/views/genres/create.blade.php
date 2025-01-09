@@ -6,7 +6,7 @@
         @csrf
         <div>
             <label class="mb-2 text-lg block" id="genre">Жанр:</label>
-            <input type='text' id="genre" name="genre"
+            <input type='text' value="{{ old('genre') }}" id="genre" name="genre"
                 class="px-4 py-2.5 text-md rounded-md bg-white border border-gray-400 w-full outline-blue-500" />
             @error('genre')
                 <span class="text-red-500">{{ $message }}</span>

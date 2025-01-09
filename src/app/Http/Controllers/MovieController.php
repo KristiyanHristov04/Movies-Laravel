@@ -19,7 +19,9 @@ class MovieController extends Controller
                 $q->where('movie_name', 'like', '%' . $search . '%')
                     ->orWhere('director', 'like', '%' . $search . '%')
                     ->orWhere('year', 'like', '%' . $search . '%')
-                    ->orWhere('genre', 'like', '%' . $search . '%');
+                    ->orWhereHas('genre', function ($q) use ($search) {
+                        $q->where('name', 'like', '%' . $search . '%');
+                    });
             });
         }
 
@@ -101,7 +103,8 @@ class MovieController extends Controller
             return redirect()->route('movies.index')->with('error', 'Нямате достъп до този ресурс!');
         }
 
-        return view('movies.edit', ["movie" => $movie]);
+        $genres = Genre::all();
+        return view('movies.edit', ["movie" => $movie, "genres" => $genres]);
     }
 
     public function update($id, Request $request)
