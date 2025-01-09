@@ -18,10 +18,13 @@ class MovieController extends Controller
         if ($search) {
             $query->where(function ($q) use ($search) {
                 $q->where('movie_name', 'like', '%' . $search . '%')
-                    ->orWhere('director', 'like', '%' . $search . '%')
                     ->orWhere('year', 'like', '%' . $search . '%')
                     ->orWhereHas('genre', function ($q) use ($search) {
                         $q->where('name', 'like', '%' . $search . '%');
+                    })
+                    ->orWhereHas('director', function ($q) use ($search) {
+                        $q->where('first_name', 'like', '%' . $search . '%')
+                        ->orWhere('last_name', 'like', '%' . $search . '%');
                     });
             });
         }
