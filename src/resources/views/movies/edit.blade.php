@@ -21,11 +21,18 @@
                 <span class="text-red-500">{{ $message }}</span>
             @enderror
         </div>
-        <div>
-            <label class="mb-2 text-lg block" id="director">Режисьор:</label>
-            <input type='text' value="{{ $movie->director }}" id="director" name="director"
-                class="px-4 py-2.5 text-md rounded-md bg-white border border-gray-400 w-full outline-blue-500" />
-            @error('director')
+        <div class="mb-3">
+            <label for="director_id" class="form-label mb-[8px] block">Режисьор:</label>
+            <select name="director_id" id="director_id"
+                class="form-control cursor-pointer w-[100%] rounded-md px-4 py-[10px]"
+                style="border-color: rgb(156 163 175);">
+                <option value="">Изберете режисьор</option>
+                @foreach ($directors as $director)
+                    <option {{ $movie->director_id == $director->id ? 'selected' : '' }} value="{{ $director->id }}">
+                        {{ $director->first_name . ' ' . $director->last_name }}</option>
+                @endforeach
+            </select>
+            @error('director_id')
                 <span class="text-red-500">{{ $message }}</span>
             @enderror
         </div>

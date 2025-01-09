@@ -109,7 +109,8 @@ class MovieController extends Controller
         }
 
         $genres = Genre::all();
-        return view('movies.edit', ["movie" => $movie, "genres" => $genres]);
+        $directors = Director::all();
+        return view('movies.edit', ["movie" => $movie, "genres" => $genres, "directors" => $directors]);
     }
 
     public function update($id, Request $request)
