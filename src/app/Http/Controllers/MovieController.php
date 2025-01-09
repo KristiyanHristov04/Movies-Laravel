@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Director;
 use App\Models\Genre;
 use App\Models\Movie;
 use Illuminate\Http\Request;
@@ -49,7 +50,8 @@ class MovieController extends Controller
     public function create()
     {
         $genres = Genre::all();
-        return view('movies.create', ["genres" => $genres]);
+        $directors = Director::all();
+        return view('movies.create', ["genres" => $genres, "directors" => $directors]);
     }
 
     public function store(Request $request)
@@ -57,7 +59,7 @@ class MovieController extends Controller
         $request->validate([
             'movieName' => 'required|max:100',
             'year' => 'required',
-            'director' => 'required|max:100',
+            'director_id' => 'required|exists:directors,id',
             'genre_id' => 'required|exists:genres,id',
             'language' => 'required|max:60',
             'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:3096',
@@ -65,8 +67,8 @@ class MovieController extends Controller
             "movieName.required" => "Моля, въведете име на филма.",
             "movieName.max" => "Името на филма не трябва да надвишава 100 символа.",
             "year.required" => "Моля, въведете година на издаване на филма.",
-            "director.required" => "Моля, въведете режисьор на филма.",
-            "director.max" => "Името на режисьора не трябва да надвишава 100 символа.",
+            "director_id.required" => "Моля, изберете режисьор.",
+            "director_id.exists" => "Избраният от вас режисьор не съществува.",
             "genre_id.required" => "Моля, изберете жанр.",
             "genre_id.exists" => "Избраният от вас жанр не съществува.",
             "language.required" => "Моля, въведете език на филма.",
@@ -82,11 +84,11 @@ class MovieController extends Controller
         Movie::create([
             'movie_name' => $request->movieName,
             'year' => $request->year,
-            'director' => $request->director,
             'language' => $request->language,
             'image_path' => $filePath,
             'user_id' => Auth::id(),
-            'genre_id' => $request->genre_id
+            'genre_id' => $request->genre_id,
+            'director_id' => $request->director_id
         ]);
 
         return redirect()->route('movies.index')->with('success', 'Филмът беше създаден успешно!');

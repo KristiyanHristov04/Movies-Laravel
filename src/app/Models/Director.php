@@ -13,4 +13,8 @@ class Director extends Model
         'about',
         'image_path'
     ];
+
+    public function movies() {
+        return $this->hasMany(Movie::class);
+    }
 }

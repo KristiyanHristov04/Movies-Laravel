@@ -9,15 +9,19 @@ class Movie extends Model
     protected $fillable = [
         'movie_name',
         'year',
-        'director',
         'language',
         'image_path',
         'user_id',
-        'genre_id'
+        'genre_id',
+        'director_id'
     ];
 
     public function user() {
         return $this->belongsTo(User::class);
+    }
+
+    public function director() {
+        return $this->belongsTo(Director::class);
     }
 
     public function genre() {

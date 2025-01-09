@@ -30,7 +30,7 @@
                                 Година: {{ $movie->year }}
                             </p>
                             <p class="mt-4 text-sm text-gray-500 leading-relaxed">
-                                Режисьор: {{ $movie->director }}
+                                Режисьор: {{ $movie->director->first_name . " " . $movie->director->last_name }}
                             </p>
                             <p class="mt-4 text-sm text-gray-500 leading-relaxed">
                                 Жанр: {{ $movie->genre->name }}
