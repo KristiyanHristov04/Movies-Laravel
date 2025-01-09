@@ -17,6 +17,7 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::get('/', [MovieController::class, 'index'])->name('movies.index');
+Route::get('/directors', [DirectorController::class, 'index'])->name('directors.index');
 Route::get('/movies/create', [MovieController::class, 'create'])->name('movies.create')->middleware('auth');
 Route::get('/genres/create', [GenreController::class, 'create'])->name('genres.create')->middleware('auth');
 Route::get('/directors/create', [DirectorController::class, 'create'])->name('directors.create')->middleware('auth');

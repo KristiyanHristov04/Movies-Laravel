@@ -7,6 +7,12 @@ use Illuminate\Http\Request;
 
 class DirectorController extends Controller
 {
+    public function index()
+    {
+        $directors = Director::paginate(2);
+        return view('directors.index', ["directors" => $directors]);
+    }
+
     public function create() {
         return view('directors.create');
     }
