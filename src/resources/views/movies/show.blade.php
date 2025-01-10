@@ -33,7 +33,7 @@
         <h1 class="my-4 text-center text-3xl">В момента преглеждате: {{ $movie->movie_name }}</h1>
         <div class="flex gap-2 flex-wrap justify-center">
             <div
-                class="bg-white shadow-[0_4px_12px_-5px_rgba(0,0,0,0.4)] w-full max-w-sm rounded-lg overflow-hidden font-[sans-serif]">
+                class="bg-white shadow-[0_4px_12px_-5px_rgba(0,0,0,0.4)] w-full max-w-md rounded-lg overflow-hidden font-[sans-serif]">
                 @if ($movie->trailer_youtube_link)
                     <div class="h-[40%] image-container">
                         <button data-trailer_link="{{ $movie->trailer_youtube_link }}" class="trailer-button"><i
