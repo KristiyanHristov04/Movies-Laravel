@@ -48,7 +48,7 @@
                 <div
                     class="bg-white shadow-[0_4px_12px_-5px_rgba(0,0,0,0.4)] w-full max-w-sm rounded-lg overflow-hidden font-[sans-serif]">
                     <div class="h-[40%] image-container">
-                        <button data-trailer_link="{{ $movie->trailer_youtube_link }}" class="trailer-button">Трейлър</button>
+                        <button data-trailer_link="{{ $movie->trailer_youtube_link }}" class="trailer-button"><i class="fa-solid fa-circle-play"></i> Трейлър</button>
                         <img src="{{ asset('storage/' . $movie->image_path) }}" class="w-full h-full" />
 
                     </div>
