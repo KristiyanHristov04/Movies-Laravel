@@ -52,7 +52,7 @@
                         Година: {{ $movie->year }}
                     </p>
                     <p class="mt-4 text-sm text-gray-500 leading-relaxed">
-                        Режисьор: {{ $movie->director->first_name . ' ' . $movie->director->last_name }}
+                        Режисьор: <a class="hover:underline" href="{{ route('directors.show', ["id" => $movie->director->id]) }}">{{ $movie->director->first_name . ' ' . $movie->director->last_name }}</a>
                     </p>
                     <p class="mt-4 text-sm text-gray-500 leading-relaxed">
                         Жанр: {{ $movie->genre->name }}
