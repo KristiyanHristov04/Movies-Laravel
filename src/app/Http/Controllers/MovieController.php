@@ -141,6 +141,7 @@ class MovieController extends Controller
             'genre_id' => 'required|exists:genres,id',
             'language_id' => 'required|exists:languages,id',
             'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:3096',
+            'trailer_youtube_link' => ['nullable', 'regex:/^(https?:\/\/)?(www\.)?(youtube\.com|youtu\.be)\/.+$/'],
         ], [
             "movieName.required" => "Моля, въведете име на филма.",
             "movieName.max" => "Името на филма не трябва да надвишава 100 символа.",
@@ -153,7 +154,8 @@ class MovieController extends Controller
             "language_id.exists" => "Избраният от вас език не съществува.",
             "image.required" => "Моля, прикачете снимка на филма.",
             "image.image" => "Невалиден файлов формат. Валидни файлови формати: jpeg,png,jpg,gif",
-            "image.max" => "Файлът не трябва да надвишава 3 MB."
+            "image.max" => "Файлът не трябва да надвишава 3 MB.",
+            "trailer_youtube_link.regex" => "Невалидна youtube връзка."
         ]);
 
         $movie = Movie::find($id);
@@ -168,8 +170,10 @@ class MovieController extends Controller
             unlink($imagePath);
         }
 
+        $videoId = $this->extractYoutubeId($request->trailer_youtube_link);
         $filePath = $request->file('image')->store('images', 'public');
         $movie->image_path = $filePath;
+        $movie->trailer_youtube_link = $videoId;
 
         $movie->save();
 
