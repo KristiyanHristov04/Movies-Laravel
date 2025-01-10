@@ -8,6 +8,7 @@ use App\Models\Language;
 use App\Models\Movie;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class MovieController extends Controller
 {
@@ -27,7 +28,8 @@ class MovieController extends Controller
                     })
                     ->orWhereHas('director', function ($q) use ($search) {
                         $q->where('first_name', 'like', '%' . $search . '%')
-                            ->orWhere('last_name', 'like', '%' . $search . '%');
+                            ->orWhere('last_name', 'like', '%' . $search . '%')
+                            ->orWhere(DB::raw("CONCAT(first_name, ' ', last_name)"), 'like', '%' . $search . '%');
                     });
             });
         }
