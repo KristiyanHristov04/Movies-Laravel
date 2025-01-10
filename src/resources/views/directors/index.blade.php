@@ -25,7 +25,8 @@
 
                     <div class="h-[60%] p-6 flex flex-col justify-between">
                         <div>
-                            <h3 class="text-gray-800 text-xl font-bold">{{ $director->first_name . " " . $director->last_name }}</h3>
+                            <h3 class="text-gray-800 text-xl font-bold">
+                                {{ $director->first_name . ' ' . $director->last_name }}</h3>
                             <p class="mt-4 text-sm text-gray-500 leading-relaxed">
                                 Година на раждане: {{ $director->born_year }}
                             </p>
@@ -33,31 +34,12 @@
                                 Информация: {{ $director->about }}
                             </p>
                         </div>
-                        {{-- <div class="flex gap-[10px] justify-center">
-                            <a href="{{ route('movies.show', $movie->id) }}" type="button"
+                        <div class="flex gap-[10px] justify-center">
+                            <a href="{{ route('directors.show', $director->id) }}" type="button"
                                 class="inline-block mt-6 px-5 py-2.5 rounded-lg text-white text-sm tracking-wider border-none outline-none bg-cyan-600 hover:bg-cyan-700 hover:cursor-pointer active:bg-cyan-600">
                                 Преглед
                             </a>
-                            @if (Auth::user())
-                                @if (Auth::user()->id == $movie->user_id)
-                                    <a href="{{ route('movies.edit', $movie->id) }}" type="button"
-                                        class="inline-block mt-6 px-5 py-2.5 rounded-lg text-white text-sm tracking-wider border-none outline-none bg-orange-600 hover:bg-orange-700 hover:cursor-pointer active:bg-orange-600">
-                                        Редактиране
-                                    </a>
-                                @endif
-
-                                @if (Auth::id() == $movie->user_id)
-                                    <form action="{{ route('movies.delete', $movie->id) }}" method="POST">
-                                        @csrf
-                                        @method('delete')
-                                        <button type="submit"
-                                            class="inline-block mt-6 px-5 py-2.5 rounded-lg text-white text-sm tracking-wider border-none outline-none bg-red-600 hover:bg-red-700 hover:cursor-pointer active:bg-red-600">
-                                            Изтриване
-                                        </button>
-                                    </form>
-                                @endif
-                            @endif
-                        </div> --}}
+                        </div>
                     </div>
                 </div>
             @endforeach
@@ -69,6 +51,6 @@
 @endsection
 
 
-@section ('scripts')
+@section('scripts')
     <script src="{{ asset('js/message.js') }}"></script>
 @endsection

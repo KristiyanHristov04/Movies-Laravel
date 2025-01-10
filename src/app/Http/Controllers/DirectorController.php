@@ -13,6 +13,15 @@ class DirectorController extends Controller
         return view('directors.index', ["directors" => $directors]);
     }
 
+    public function show($id)
+    {
+        $director = Director::find($id);
+        if (!$director) {
+            return redirect()->route('directors.index')->with('error', 'Не съществува такъв ресурс!');
+        }
+        return view('directors.show', ["director" => $director]);
+    }
+
     public function create() {
         return view('directors.create');
     }

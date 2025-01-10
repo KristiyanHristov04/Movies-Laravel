@@ -18,6 +18,7 @@ Route::get('/movies/create', [MovieController::class, 'create'])->name('movies.c
 Route::get('/genres/create', [GenreController::class, 'create'])->name('genres.create')->middleware('auth');
 Route::get('/directors/create', [DirectorController::class, 'create'])->name('directors.create')->middleware('auth');
 Route::get('/movies/{id}', [MovieController::class, 'show'])->name('movies.show');
+Route::get('/directors/{id}', [DirectorController::class, 'show'])->name('directors.show');
 Route::get('/movies/{id}/edit', [MovieController::class, 'edit'])->name('movies.edit')->middleware('auth');
 
 Route::post('/movies/create', [MovieController::class, 'store'])->name('movies.store')->middleware('auth');
