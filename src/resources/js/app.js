@@ -1,6 +1,4 @@
 import './bootstrap';
-import './message';
-import './movie-trailer';
 
 import Alpine from 'alpinejs';
 

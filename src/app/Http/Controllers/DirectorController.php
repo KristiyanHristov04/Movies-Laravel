@@ -45,6 +45,6 @@ class DirectorController extends Controller
             'image_path' => $filePath
         ]);
 
-        return redirect()->route('movies.index')->with('success', 'Режисьорът беше създаден успешно!');
+        return redirect()->route('directors.index')->with('success', 'Режисьорът беше добавен успешно!');
     }
 }

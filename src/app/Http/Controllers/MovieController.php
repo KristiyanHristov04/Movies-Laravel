@@ -107,7 +107,7 @@ class MovieController extends Controller
             'trailer_youtube_link' => $videoId
         ]);
 
-        return redirect()->route('movies.index')->with('success', 'Филмът беше създаден успешно!');
+        return redirect()->route('movies.index')->with('success', 'Филмът беше добавен успешно!');
     }
 
     public function edit($id)

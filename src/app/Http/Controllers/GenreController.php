@@ -23,6 +23,6 @@ class GenreController extends Controller
             'name' => $request->genre
         ]);
 
-        return redirect()->route('movies.index')->with('success', 'Жанрът беше създаден успешно!');
+        return redirect()->route('movies.index')->with('success', 'Жанрът беше добавен успешно!');
     }
 }

@@ -111,3 +111,8 @@
         {{ $movies->links('pagination::tailwind') }}
     </div>
 @endsection
+
+@section ('scripts')
+    <script src="{{ asset('js/movie-trailer.js') }}"></script>
+    <script src="{{ asset('js/message.js') }}"></script>
+@endsection
