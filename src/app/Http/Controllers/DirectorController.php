@@ -9,7 +9,7 @@ class DirectorController extends Controller
 {
     public function index()
     {
-        $directors = Director::orderBy('id', 'DESC')->paginate(2);
+        $directors = Director::orderBy('id', 'DESC')->paginate(4);
         return view('directors.index', ["directors" => $directors]);
     }
 
