@@ -42,7 +42,7 @@ class MovieController extends Controller
             }
         }
 
-        $movies = $query->paginate(2)->appends(['search' => $search, 'sortByYear' => $sortByYear]);
+        $movies = $query->orderBy('id', 'DESC')->paginate(2)->appends(['search' => $search, 'sortByYear' => $sortByYear]);
         return view('movies.index', ["movies" => $movies]);
     }
 
