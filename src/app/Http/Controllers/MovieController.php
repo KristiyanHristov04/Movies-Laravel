@@ -55,8 +55,8 @@ class MovieController extends Controller
 
     public function create()
     {
-        $genres = Genre::all();
-        $directors = Director::all();
+        $genres = Genre::orderBy('name', 'ASC')->get();
+        $directors = Director::orderBy('first_name', 'ASC')->get();
         $languages = Language::all();
         return view('movies.create', [
             "genres" => $genres,
@@ -115,8 +115,8 @@ class MovieController extends Controller
             return redirect()->route('movies.index')->with('error', 'Нямате достъп до този ресурс!');
         }
 
-        $genres = Genre::all();
-        $directors = Director::all();
+        $genres = Genre::orderBy('name', 'ASC')->get();
+        $directors = Director::orderBy('first_name', 'ASC')->get();
         $languages = Language::all();
         return view('movies.edit', [
             "movie" => $movie,
