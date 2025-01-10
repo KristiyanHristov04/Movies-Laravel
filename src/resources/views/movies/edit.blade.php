@@ -1,6 +1,7 @@
 @extends('shared.layout')
 
 @section('content')
+    <h1 class="text-center my-4 text-4xl">Редактиране на филм</h1>
     <form action="{{ route('movies.update', $movie->id) }}" method="POST" enctype="multipart/form-data"
         class="flex flex-col justify-center max-w-lg mx-auto px-4 space-y-6 font-[sans-serif] text-[#333]">
         @csrf
@@ -52,7 +53,8 @@
         </div>
         <div class="mb-3">
             <label for="language_id" class="form-label mb-[8px] block">Жанр:</label>
-            <select name="language_id" id="language_id" class="form-control cursor-pointer w-[100%] rounded-md px-4 py-[10px]"
+            <select name="language_id" id="language_id"
+                class="form-control cursor-pointer w-[100%] rounded-md px-4 py-[10px]"
                 style="border-color: rgb(156 163 175);">
                 <option value="">Изберете език</option>
                 @foreach ($languages as $language)

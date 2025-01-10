@@ -27,7 +27,7 @@
                         @if (Auth::user())
                             @if (Auth::user()->id == $movie->user_id)
                                 <a href="{{ route('movies.edit', $movie->id) }}" type="button"
-                                    class="inline-block mt-6 px-5 py-2.5 rounded-lg text-white text-sm tracking-wider border-none outline-none bg-orange-600 hover:bg-orange-700 hover:cursor-pointer active:bg-orange-600">
+                                    class="inline-block mt-6 px-5 py-2.5 rounded-lg text-white text-sm tracking-wider border-none outline-none bg-orange-300 hover:bg-orange-400 hover:cursor-pointer active:bg-orange-400">
                                     Редактиране
                                 </a>
                             @endif

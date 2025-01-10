@@ -1,6 +1,7 @@
 @extends('shared.layout')
 
 @section('content')
+    <h1 class="text-center my-4 text-4xl">Добавяне на жанр</h1>
     <form action="{{ route('genres.store') }}" method="POST"
         class="flex flex-col justify-center max-w-lg mx-auto px-4 space-y-6 font-[sans-serif] text-[#333]">
         @csrf
@@ -14,6 +15,6 @@
         </div>
         <button type="submit"
             class="mb-4 inline-block px-5 py-2.5 rounded-lg text-white text-md tracking-wider border-none outline-none bg-green-600 hover:bg-green-700 hover:cursor-pointer active:bg-green-600">Добавяне
-            </button>
+        </button>
     </form>
 @endsection

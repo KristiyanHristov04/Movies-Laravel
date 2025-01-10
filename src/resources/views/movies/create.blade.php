@@ -1,6 +1,7 @@
 @extends('shared.layout')
 
 @section('content')
+    <h1 class="text-center my-4 text-4xl">Добавяне на филм</h1>
     <form action="{{ route('movies.store') }}" method="POST" enctype="multipart/form-data"
         class="flex flex-col justify-center max-w-lg mx-auto px-4 space-y-6 font-[sans-serif] text-[#333]">
         @csrf
