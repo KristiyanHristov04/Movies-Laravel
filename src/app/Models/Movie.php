@@ -13,7 +13,8 @@ class Movie extends Model
         'user_id',
         'genre_id',
         'director_id',
-        'language_id'
+        'language_id',
+        'trailer_youtube_link'
     ];
 
     public function user() {

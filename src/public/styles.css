@@ -1,0 +1,37 @@
+.image-container {
+    position: relative;
+}
+
+.image-container:hover img {
+    filter: blur(2px);
+}
+
+.image-container:hover .trailer-button {
+    display: block;
+}
+
+.trailer-button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: black;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 5px;
+    display: none;
+    z-index: 10;
+}
+
+.trailer-button:hover {
+    background-color: rgb(27, 27, 27);
+}
+
+.modal {
+    visibility: hidden;
+}
+
+iframe {
+    width: 100%;
+    height: 250px;
+}

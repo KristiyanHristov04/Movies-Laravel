@@ -73,6 +73,14 @@
                 <span class="text-red-500">{{ $message }}</span>
             @enderror
         </div>
+        <div>
+            <label class="mb-2 text-lg block" id="trailer_youtube_link">Youtube линк към трейлър:</label>
+            <input type='url' value="{{ old('trailer_youtube_link') }}" id="trailer_youtube_link" name="trailer_youtube_link"
+                class="px-4 py-2.5 text-md rounded-md bg-white border border-gray-400 w-full outline-blue-500" />
+            @error('trailer_youtube_link')
+                <span class="text-red-500">{{ $message }}</span>
+            @enderror
+        </div>
         <button type="submit"
             class="mb-4 inline-block px-5 py-2.5 rounded-lg text-white text-md tracking-wider border-none outline-none bg-green-600 hover:bg-green-700 hover:cursor-pointer active:bg-green-600">Добавяне
         </button>

@@ -76,6 +76,7 @@ class MovieController extends Controller
             'genre_id' => 'required|exists:genres,id',
             'language_id' => 'required|exists:languages,id',
             'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:3096',
+            'trailer_youtube_link' => ['nullable', 'regex:/^(https?:\/\/)?(www\.)?(youtube\.com|youtu\.be)\/.+$/'],
         ], [
             "movieName.required" => "Моля, въведете име на филма.",
             "movieName.max" => "Името на филма не трябва да надвишава 100 символа.",
@@ -88,9 +89,11 @@ class MovieController extends Controller
             "language_id.exists" => "Избраният от вас език не съществува.",
             "image.required" => "Моля, прикачете снимка на филма.",
             "image.image" => "Невалиден файлов формат. Валидни файлови формати: jpeg,png,jpg,gif",
-            "image.max" => "Файлът не трябва да надвишава 3 MB."
+            "image.max" => "Файлът не трябва да надвишава 3 MB.",
+            "trailer_youtube_link.regex" => "Невалидна youtube връзка."
         ]);
 
+        $videoId = $this->extractYoutubeId($request->trailer_youtube_link);
         $filePath = $request->file('image')->store('images', 'public');
 
         Movie::create([
@@ -100,7 +103,8 @@ class MovieController extends Controller
             'user_id' => Auth::id(),
             'genre_id' => $request->genre_id,
             'director_id' => $request->director_id,
-            'language_id' => $request->language_id
+            'language_id' => $request->language_id,
+            'trailer_youtube_link' => $videoId
         ]);
 
         return redirect()->route('movies.index')->with('success', 'Филмът беше създаден успешно!');
@@ -186,5 +190,11 @@ class MovieController extends Controller
         }
 
         return redirect()->route('movies.index')->with('success', 'Филмът беше изтрит успешно!');
+    }
+
+    protected function extractYoutubeId($url)
+    {
+        preg_match('/(youtu\.be\/|youtube\.com\/(watch\?v=|embed\/|v\/|shorts\/))([a-zA-Z0-9_-]{11})/', $url, $matches);
+        return $matches[3] ?? null;
     }
 }
