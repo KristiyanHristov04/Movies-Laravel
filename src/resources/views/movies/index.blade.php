@@ -6,7 +6,7 @@
         class="modal fixed inset-0 p-4 flex flex-wrap justify-center items-center w-full h-full z-[1000] before:fixed before:inset-0 before:w-full before:h-full before:bg-[rgba(0,0,0,0.5)] overflow-auto font-[sans-serif]">
         <div class="w-full max-w-lg bg-white shadow-lg rounded-lg p-6 relative">
             <div class="flex items-center pb-3 border-b border-gray-300">
-                <h3 class="text-gray-800 text-xl font-bold flex-1">Movie Name</h3>
+                <h3 class="text-gray-800 text-xl font-bold flex-1">Трейлър</h3>
                 <button id="modal-close-button">
                     <svg xmlns="http://www.w3.org/2000/svg"
                         class="w-3 ml-2 cursor-pointer shrink-0 fill-gray-400 hover:fill-red-500"
@@ -47,11 +47,19 @@
             @foreach ($movies as $movie)
                 <div
                     class="bg-white shadow-[0_4px_12px_-5px_rgba(0,0,0,0.4)] w-full max-w-sm rounded-lg overflow-hidden font-[sans-serif]">
-                    <div class="h-[40%] image-container">
-                        <button data-trailer_link="{{ $movie->trailer_youtube_link }}" class="trailer-button"><i class="fa-solid fa-circle-play"></i> Трейлър</button>
-                        <img src="{{ asset('storage/' . $movie->image_path) }}" class="w-full h-full" />
+                    @if ($movie->trailer_youtube_link)
+                        <div class="h-[40%] image-container">
+                            <button data-trailer_link="{{ $movie->trailer_youtube_link }}" class="trailer-button"><i
+                                    class="fa-solid fa-circle-play"></i> Трейлър</button>
+                            <img src="{{ asset('storage/' . $movie->image_path) }}" class="w-full h-full" />
+                        </div>
+                    @else
+                        <div class="h-[40%] image-container">
+                            <p class="missing-trailer">Липсва трейлър</p>
+                            <img src="{{ asset('storage/' . $movie->image_path) }}" class="w-full h-full" />
+                        </div>
+                    @endif
 
-                    </div>
 
                     <div class="h-[60%] p-6 flex flex-col justify-between">
                         <div>
