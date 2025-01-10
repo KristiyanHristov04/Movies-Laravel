@@ -23,6 +23,12 @@
                     </x-nav-link>
                 </div>
 
+                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    <x-nav-link :href="route('genres.create')" :active="request()->routeIs('genres.create')">
+                        {{ __('Създаване на жанр') }}
+                    </x-nav-link>
+                </div>
+
                 {{-- <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <x-nav-link :href="route('movies.mine')" :active="request()->routeIs('movies.mine')">
                         {{ __('Моите филми') }}
@@ -107,6 +113,13 @@
         <div class="pt-2 pb-3 space-y-1">
             <x-responsive-nav-link :href="route('directors.index')" :active="request()->routeIs('directors.index')">
                 {{ __('Режисьори') }}
+            </x-responsive-nav-link>
+        </div>
+
+
+        <div class="pt-2 pb-3 space-y-1">
+            <x-responsive-nav-link :href="route('genres.create')" :active="request()->routeIs('genres.create')">
+                {{ __('Създаване на жанр') }}
             </x-responsive-nav-link>
         </div>
 
