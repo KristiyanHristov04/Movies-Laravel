@@ -16,9 +16,12 @@
     </head>
     <body class="font-sans text-gray-900 antialiased">
         <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-gray-100">
-            <div>
+            <div class="flex items-center gap-2">
                 <a href="/">
-                    <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
+                    <img src="{{ asset('logo.png') }}">
+                </a>
+                <a href="{{ route('movies.index') }}" style="letter-spacing: 5px; color: #ff7600; font-family: sans-serif; font-weight: bold; font-size: 26px;">
+                    ФИЛМИ.БГ
                 </a>
             </div>
 
