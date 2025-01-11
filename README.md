@@ -1,6 +1,6 @@
 # Movies Web Application
 ## Overview
-This is a university project built using Laravel and Breeze for authentication. Guests can browse movies, directors, and genres, but they must authenticate to create new movies, directors or genres. Authenticated users can only edit or delete their own movies. The web application includes features such as pagination, CRUD operations (for movies), sorting, and filtering.
+This is a university project built using Laravel and Breeze for authentication. Guests can browse movies and directors, but they must authenticate to create new movies, directors or genres. Authenticated users can only edit or delete their own movies. The web application includes features such as pagination, CRUD operations (for movies), sorting, and filtering.
 
 ![movies](https://github.com/user-attachments/assets/4a298741-cc69-486e-ab18-b682a870c9dd)
 ![directors](https://github.com/user-attachments/assets/64406d40-0de2-47d9-8aa7-7769b114643f)
