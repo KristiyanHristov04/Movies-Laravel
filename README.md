@@ -1,6 +1,6 @@
 # Movies-Laravel
 ## Overview
-This is a Laravel project about movies.
+This is a university project built with Laravel + Breeze(for authentication) project about movies.
 
 ![movies](https://github.com/user-attachments/assets/4a298741-cc69-486e-ab18-b682a870c9dd)
 ![directors](https://github.com/user-attachments/assets/64406d40-0de2-47d9-8aa7-7769b114643f)
