@@ -1,4 +1,4 @@
-# Movies-Laravel
+# Movies Web Application
 ## Overview
 This is a university project built with Laravel + Breeze(for authentication) project about movies. Guests can browse movies and directors and if want to create new movies, directors or genres they have to authenticate themselves. Authenticated users can edit/delete only their own movies. 
 
