@@ -4,6 +4,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AdminDirectorController;
 use App\Http\Controllers\AdminGenreController;
 use App\Http\Controllers\AdminMovieController;
+use App\Http\Controllers\AdminUserController;
 use App\Http\Controllers\DirectorController;
 use App\Http\Controllers\GenreController;
 use App\Http\Controllers\MovieController;
@@ -30,6 +31,7 @@ Route::get('/admin/dashboard', [AdminController::class, 'index'])->name('admin.d
 Route::get('/admin/directors', [AdminDirectorController::class, 'index'])->name('admin.directors.index')->middleware(['auth', AdminMiddleware::class]);
 Route::get('/admin/movies', [AdminMovieController::class, 'index'])->name('admin.movies.index')->middleware(['auth', AdminMiddleware::class]);
 Route::get('/admin/genres', [AdminGenreController::class, 'index'])->name('admin.genres.index')->middleware(['auth', AdminMiddleware::class]);
+Route::get('/admin/users', [AdminUserController::class, 'index'])->name('admin.users.index')->middleware(['auth', AdminMiddleware::class]);
 Route::get('/admin/movies/{id}/edit', [AdminMovieController::class, 'edit'])->name('admin.movies.edit')->middleware(['auth', AdminMiddleware::class]);
 Route::get('/admin/directors/{id}/edit', [AdminDirectorController::class, 'edit'])->name('admin.directors.edit')->middleware(['auth', AdminMiddleware::class]);
 Route::get('/admin/genres/{id}/edit', [AdminGenreController::class, 'edit'])->name('admin.genres.edit')->middleware(['auth', AdminMiddleware::class]);
@@ -38,6 +40,8 @@ Route::get('/admin/genres/{id}/edit', [AdminGenreController::class, 'edit'])->na
 Route::post('/movies', [MovieController::class, 'store'])->name('movies.store')->middleware('auth');
 Route::post('/genres', [GenreController::class, 'store'])->name('genres.store')->middleware('auth');
 Route::post('/directors', [DirectorController::class, 'store'])->name('directors.store')->middleware('auth');
+Route::post('/admin/users/{id}/promote', [AdminUserController::class, 'promote'])->name('admin.users.promote')->middleware(['auth', AdminMiddleware::class]);
+Route::post('/admin/users/{id}/demote', [AdminUserController::class, 'demote'])->name('admin.users.demote')->middleware(['auth', AdminMiddleware::class]);
 
 Route::put('/movies/{id}', [MovieController::class, 'update'])->name('movies.update')->middleware('auth');
 Route::put('/admin/movies/{id}', [AdminMovieController::class, 'update'])->name('admin.movies.update')->middleware(['auth', AdminMiddleware::class]);
