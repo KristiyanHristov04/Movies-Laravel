@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\DirectorController;
 use App\Http\Controllers\GenreController;
 use App\Http\Controllers\MovieController;
@@ -20,6 +21,7 @@ Route::get('/directors/create', [DirectorController::class, 'create'])->name('di
 Route::get('/movies/{id}', [MovieController::class, 'show'])->name('movies.show');
 Route::get('/directors/{id}', [DirectorController::class, 'show'])->name('directors.show');
 Route::get('/movies/{id}/edit', [MovieController::class, 'edit'])->name('movies.edit')->middleware('auth');
+Route::get('/admin/dashboard', [AdminController::class, 'index'])->name('admin.dashboard.index');
 
 Route::post('/movies', [MovieController::class, 'store'])->name('movies.store')->middleware('auth');
 Route::post('/genres', [GenreController::class, 'store'])->name('genres.store')->middleware('auth');
