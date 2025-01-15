@@ -39,5 +39,6 @@ class DatabaseSeeder extends Seeder
             Language::firstOrCreate(['language_name' => $language]);
         }
 
+        $this->call(AdminSeeder::class);
     }
 }
