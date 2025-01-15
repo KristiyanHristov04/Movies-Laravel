@@ -1,7 +1,7 @@
 @extends('shared.layout')
 
 @section('styles')
-    <link rel="stylesheet" href="{{ asset('css/directors.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/table.css') }}">
     </link>
 @endsection
 

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AdminDirectorController;
+use App\Http\Controllers\AdminGenreController;
 use App\Http\Controllers\AdminMovieController;
 use App\Http\Controllers\DirectorController;
 use App\Http\Controllers\GenreController;
@@ -28,8 +29,10 @@ Route::get('/movies/{id}/edit', [MovieController::class, 'edit'])->name('movies.
 Route::get('/admin/dashboard', [AdminController::class, 'index'])->name('admin.dashboard.index')->middleware(['auth', AdminMiddleware::class]);
 Route::get('/admin/directors', [AdminDirectorController::class, 'index'])->name('admin.directors.index')->middleware(['auth', AdminMiddleware::class]);
 Route::get('/admin/movies', [AdminMovieController::class, 'index'])->name('admin.movies.index')->middleware(['auth', AdminMiddleware::class]);
+Route::get('/admin/genres', [AdminGenreController::class, 'index'])->name('admin.genres.index')->middleware(['auth', AdminMiddleware::class]);
 Route::get('/admin/movies/{id}/edit', [AdminMovieController::class, 'edit'])->name('admin.movies.edit')->middleware(['auth', AdminMiddleware::class]);
 Route::get('/admin/directors/{id}/edit', [AdminDirectorController::class, 'edit'])->name('admin.directors.edit')->middleware(['auth', AdminMiddleware::class]);
+Route::get('/admin/genres/{id}/edit', [AdminGenreController::class, 'edit'])->name('admin.genres.edit')->middleware(['auth', AdminMiddleware::class]);
 
 
 Route::post('/movies', [MovieController::class, 'store'])->name('movies.store')->middleware('auth');
@@ -39,9 +42,11 @@ Route::post('/directors', [DirectorController::class, 'store'])->name('directors
 Route::put('/movies/{id}', [MovieController::class, 'update'])->name('movies.update')->middleware('auth');
 Route::put('/admin/movies/{id}', [AdminMovieController::class, 'update'])->name('admin.movies.update')->middleware(['auth', AdminMiddleware::class]);
 Route::put('/admin/directors/{id}', [AdminDirectorController::class, 'update'])->name('admin.directors.update')->middleware(['auth', AdminMiddleware::class]);
+Route::put('/admin/genres/{id}', [AdminGenreController::class, 'update'])->name('admin.genres.update')->middleware(['auth', AdminMiddleware::class]);
 
 Route::delete('/movies/{id}', [MovieController::class, 'destroy'])->name('movies.delete')->middleware('auth');
 Route::delete('/admin/movies/{id}', [AdminMovieController::class, 'destroy'])->name('admin.movies.delete')->middleware(['auth', AdminMiddleware::class]);
 Route::delete('/admin/directors/{id}', [AdminDirectorController::class, 'destroy'])->name('admin.directors.delete')->middleware(['auth', AdminMiddleware::class]);
+Route::delete('/admin/genres/{id}', [AdminGenreController::class, 'destroy'])->name('admin.genres.delete')->middleware(['auth', AdminMiddleware::class]);
 
 require __DIR__.'/auth.php';

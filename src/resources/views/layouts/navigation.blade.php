@@ -52,6 +52,14 @@
                         </x-nav-link>
                     @endif
                 </div>
+
+                <div class="hidden space-x-8 xl:-my-px xl:ms-10 xl:flex">
+                    @if (Auth::check() && Auth::user()->is_admin)
+                        <x-nav-link :href="route('admin.genres.index')" :active="request()->routeIs('admin.genres.index')">
+                            {{ __('Жанрове') }}
+                        </x-nav-link>
+                    @endif
+                </div>
             </div>
 
             <!-- Settings Dropdown -->
@@ -160,6 +168,14 @@
                 <x-responsive-nav-link :href="route('genres.create')" :active="request()->routeIs('genres.create')">
                     {{ __('Добавяне на жанр') }}
                 </x-responsive-nav-link>
+            @endif
+        </div>
+
+        <div class="pt-2 pb-3 space-y-1">
+            @if (Auth::check() && Auth::user()->is_admin)
+            <x-responsive-nav-link :href="route('admin.genres.index')" :active="request()->routeIs('admin.genres.index')">
+                {{ __('Жанрове') }}
+            </x-responsive-nav-link>
             @endif
         </div>
 
