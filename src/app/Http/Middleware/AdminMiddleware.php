@@ -21,6 +21,7 @@ class AdminMiddleware
             return $next($request);
         } 
 
-        return abort(403, 'Unauthorized Access');
+        // return abort(403, 'Unauthorized Access');
+        return redirect()->route('movies.index')->with('error', 'Нямате достъп до този ресурс!');
     }
 }
