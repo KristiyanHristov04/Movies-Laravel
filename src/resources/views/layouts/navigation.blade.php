@@ -43,9 +43,9 @@
 
                 <div class="hidden space-x-8 xl:-my-px xl:ms-10 xl:flex">
                     @if (Auth::check() && Auth::user()->is_admin)
-                        {{-- <x-nav-link :href="route('admin.dashboard.index')" :active="request()->routeIs('admin.dashboard.index')">
-                            {{ __('Табло') }}
-                        </x-nav-link> --}}
+                        <x-nav-link :href="route('admin.directors.index')" :active="request()->routeIs('admin.directors.index')">
+                            {{ __('Режисьори') }}
+                        </x-nav-link>
                     @else
                         <x-nav-link :href="route('genres.create')" :active="request()->routeIs('genres.create')">
                             {{ __('Добавяне на жанр') }}
@@ -153,9 +153,9 @@
 
         <div class="pt-2 pb-3 space-y-1">
             @if (Auth::check() && Auth::user()->is_admin)
-                {{-- <x-responsive-nav-link :href="route('admin.dashboard.index')" :active="request()->routeIs('admin.dashboard.index')">
-                    {{ __('Табло') }}
-                </x-responsive-nav-link> --}}
+            <x-responsive-nav-link :href="route('admin.directors.index')" :active="request()->routeIs('admin.directors.index')">
+                {{ __('Режисьори') }}
+            </x-responsive-nav-link>
             @else
                 <x-responsive-nav-link :href="route('genres.create')" :active="request()->routeIs('genres.create')">
                     {{ __('Добавяне на жанр') }}

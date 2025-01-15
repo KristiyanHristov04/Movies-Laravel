@@ -1,0 +1,25 @@
+table {
+    table-layout: fixed;
+    width: 100%; /* Ensures the table spans the container */
+}
+
+th {
+    width: auto; /* Automatically distributes equal widths */
+}
+
+.long-text {
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+@media screen and (max-width: 1024px) {
+    table {
+        table-layout: auto;
+    }
+
+    .long-text {
+        width: 100px;
+    }
+}
