@@ -26,12 +26,15 @@ Route::get('/directors/{id}', [DirectorController::class, 'show'])->name('direct
 Route::get('/movies/{id}/edit', [MovieController::class, 'edit'])->name('movies.edit')->middleware(['auth', RestrictAdminMiddleware::class]);
 Route::get('/admin/dashboard', [AdminController::class, 'index'])->name('admin.dashboard.index')->middleware(['auth', AdminMiddleware::class]);
 Route::get('/admin/movies', [AdminMovieController::class, 'index'])->name('admin.movies.index')->middleware(['auth', AdminMiddleware::class]);
+Route::get('/admin/movies/{id}/edit', [AdminMovieController::class, 'edit'])->name('admin.movies.edit')->middleware(['auth', AdminMiddleware::class]);
+
 
 Route::post('/movies', [MovieController::class, 'store'])->name('movies.store')->middleware('auth');
 Route::post('/genres', [GenreController::class, 'store'])->name('genres.store')->middleware('auth');
 Route::post('/directors', [DirectorController::class, 'store'])->name('directors.store')->middleware('auth');
 
-Route::put('movies/{id}', [MovieController::class, 'update'])->name('movies.update')->middleware('auth');
+Route::put('/movies/{id}', [MovieController::class, 'update'])->name('movies.update')->middleware('auth');
+Route::put('/admin/movies/{id}', [AdminMovieController::class, 'update'])->name('admin.movies.update')->middleware(['auth', AdminMiddleware::class]);
 
 Route::delete('/movies/{id}', [MovieController::class, 'destroy'])->name('movies.delete')->middleware('auth');
 Route::delete('/admin/movies/{id}', [AdminMovieController::class, 'destroy'])->name('admin.movies.delete')->middleware(['auth', AdminMiddleware::class]);

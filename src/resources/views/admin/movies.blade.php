@@ -64,7 +64,7 @@
                                         <td class="text-center px-6 py-4 whitespace-nowrap text-sm text-gray-800">
                                             {{ $movie->user->name }}</td>
                                         <td class="text-center px-6 py-4 whitespace-nowrap text-sm font-medium">
-                                            <a type="button"
+                                            <a href="{{ route('admin.movies.edit', ["id" => $movie->id]) }}" type="button"
                                                 class="cursor-pointer inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent text-blue-600 hover:text-blue-800 focus:outline-none focus:text-blue-800 disabled:opacity-50 disabled:pointer-events-none dark:text-blue-500 dark:hover:text-blue-400 dark:focus:text-blue-400">Редактиране</a>
                                             <form action="{{ route('admin.movies.delete', ['id' => $movie->id]) }}" method="POST">
                                                 @csrf
