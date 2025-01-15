@@ -8,7 +8,7 @@
 
     <div
         class='flex max-w-xs w-full border-gray-100 bg-gray-100 px-4 py-2 rounded outline focus-within:shadow-none outline-transparent border focus-within:border-blue-500 focus-within:bg-transparent transition-all' style="border-width: 2px;">
-        <input type='text' name="search" value="{{ request('search') }}" placeholder='Търсене на филм..'
+        <input type='text' name="search" value="{{ request('search') }}" placeholder='Търсене на филм...'
             class='w-full text-sm bg-transparent rounded pr-2 border-none' style="box-shadow: none;" />
         <button>
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192.904 192.904" width="16px"

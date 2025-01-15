@@ -15,7 +15,7 @@
                 </div>
 
                 <!-- Navigation Links -->
-                <div class="hidden space-x-8 xl:-my-px xl:ms-10 xl:flex">
+                <div class="hidden space-x-8 xl:-my-px xl:ms-5 xl:flex">
                     @if (Auth::check() && Auth::user()->is_admin)
                         <x-nav-link :href="route('admin.dashboard.index')" :active="request()->routeIs('admin.dashboard.index')">
                             {{ __('Административно табло') }}
@@ -28,7 +28,7 @@
 
                 </div>
 
-                <div class="hidden space-x-8 xl:-my-px xl:ms-10 xl:flex">
+                <div class="hidden space-x-8 xl:-my-px xl:ms-5 xl:flex">
                     @if (Auth::check() && Auth::user()->is_admin)
                         <x-nav-link :href="route('admin.movies.index')" :active="request()->routeIs('admin.movies.index')">
                             {{ __('Филми') }}
@@ -41,7 +41,7 @@
 
                 </div>
 
-                <div class="hidden space-x-8 xl:-my-px xl:ms-10 xl:flex">
+                <div class="hidden space-x-8 xl:-my-px xl:ms-5 xl:flex">
                     @if (Auth::check() && Auth::user()->is_admin)
                         <x-nav-link :href="route('admin.directors.index')" :active="request()->routeIs('admin.directors.index')">
                             {{ __('Режисьори') }}
@@ -53,7 +53,7 @@
                     @endif
                 </div>
 
-                <div class="hidden space-x-8 xl:-my-px xl:ms-10 xl:flex">
+                <div class="hidden space-x-8 xl:-my-px xl:ms-5 xl:flex">
                     @if (Auth::check() && Auth::user()->is_admin)
                         <x-nav-link :href="route('admin.genres.index')" :active="request()->routeIs('admin.genres.index')">
                             {{ __('Жанрове') }}

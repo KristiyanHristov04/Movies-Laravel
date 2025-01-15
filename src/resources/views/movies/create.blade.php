@@ -6,7 +6,7 @@
         class="flex flex-col justify-center max-w-lg mx-auto px-4 space-y-6 font-[sans-serif] text-[#333]">
         @csrf
         <div>
-            <label class="mb-2 text-lg block" id="movieName">Име на филм:</label>
+            <label class="mb-2 text-lg block" for="movieName">Име на филм:</label>
             <input type='text' value="{{ old('movieName') }}" id="movieName" name="movieName"
                 class="px-4 py-2.5 text-md rounded-md bg-white border border-gray-400 w-full outline-blue-500" />
             @error('movieName')
@@ -14,7 +14,7 @@
             @enderror
         </div>
         <div>
-            <label class="mb-2 text-lg block" id="year">Година на издаване:</label>
+            <label class="mb-2 text-lg block" for="year">Година на издаване:</label>
             <input type='number' value="{{ old('year') }}" id="year" name="year"
                 class="px-4 py-2.5 text-md rounded-md bg-white border border-gray-400 w-full outline-blue-500" />
             @error('year')
@@ -66,7 +66,7 @@
             @enderror
         </div>
         <div>
-            <label class="mb-2 text-lg block" id="image">Снимка:</label>
+            <label class="mb-2 text-lg block" for="image">Снимка:</label>
             <input type='file' id="image" name="image"
                 class="px-4 py-2.5 text-md rounded-md bg-white border border-gray-400 w-full outline-blue-500" />
             @error('image')
@@ -74,7 +74,7 @@
             @enderror
         </div>
         <div>
-            <label class="mb-2 text-lg block" id="trailer_youtube_link">Youtube линк към трейлър:</label>
+            <label class="mb-2 text-lg block" for="trailer_youtube_link">Youtube линк към трейлър:</label>
             <input type='url' value="{{ old('trailer_youtube_link') }}" id="trailer_youtube_link" name="trailer_youtube_link"
                 class="px-4 py-2.5 text-md rounded-md bg-white border border-gray-400 w-full outline-blue-500" />
             @error('trailer_youtube_link')

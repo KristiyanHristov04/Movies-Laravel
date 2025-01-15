@@ -7,7 +7,7 @@
         @csrf
         @method('put')
         <div>
-            <label class="mb-2 text-lg block" id="genre">Име:</label>
+            <label class="mb-2 text-lg block" for="genre">Име:</label>
             <input type='text' value="{{ $genre->name }}" id="genre" name="genre"
                 class="px-4 py-2.5 text-md rounded-md bg-white border border-gray-400 w-full outline-blue-500" />
             @error('genre')

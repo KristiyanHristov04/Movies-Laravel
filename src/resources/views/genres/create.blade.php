@@ -6,7 +6,7 @@
         class="flex flex-col justify-center max-w-lg mx-auto px-4 space-y-6 font-[sans-serif] text-[#333]">
         @csrf
         <div>
-            <label class="mb-2 text-lg block" id="genre">Жанр:</label>
+            <label class="mb-2 text-lg block" for="genre">Жанр:</label>
             <input type='text' value="{{ old('genre') }}" id="genre" name="genre"
                 class="px-4 py-2.5 text-md rounded-md bg-white border border-gray-400 w-full outline-blue-500" />
             @error('genre')

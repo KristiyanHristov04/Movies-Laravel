@@ -7,7 +7,7 @@
         @csrf
         @method('put')
         <div>
-            <label class="mb-2 text-lg block" id="first_name">Име:</label>
+            <label class="mb-2 text-lg block" for="first_name">Име:</label>
             <input type='text' value="{{ $director->first_name }}" id="first_name" name="first_name"
                 class="px-4 py-2.5 text-md rounded-md bg-white border border-gray-400 w-full outline-blue-500" />
             @error('first_name')
@@ -15,7 +15,7 @@
             @enderror
         </div>
         <div>
-            <label class="mb-2 text-lg block" id="last_name">Фамилия:</label>
+            <label class="mb-2 text-lg block" for="last_name">Фамилия:</label>
             <input type='text' value="{{ $director->last_name }}" id="last_name" name="last_name"
                 class="px-4 py-2.5 text-md rounded-md bg-white border border-gray-400 w-full outline-blue-500" />
             @error('last_name')
@@ -23,7 +23,7 @@
             @enderror
         </div>
         <div class="mb-3">
-            <label class="mb-2 text-lg block" id="born_year">Година на раждане:</label>
+            <label class="mb-2 text-lg block" for="born_year">Година на раждане:</label>
             <input type='number' value="{{ $director->born_year }}" id="born_year" name="born_year"
                 class="px-4 py-2.5 text-md rounded-md bg-white border border-gray-400 w-full outline-blue-500" />
             @error('born_year')
@@ -31,7 +31,7 @@
             @enderror
         </div>
         <div class="mb-3">
-            <label class="mb-2 text-lg block" id="about">Информация:</label>
+            <label class="mb-2 text-lg block" for="about">Информация:</label>
             <textarea id="about" name="about"
                 class="px-4 py-2.5 text-md rounded-md bg-white border border-gray-400 w-full outline-blue-500">{{ $director->about }}</textarea>
             @error('about')
@@ -39,7 +39,7 @@
             @enderror
         </div>
         <div>
-            <label class="mb-2 text-lg block" id="image">Снимка:</label>
+            <label class="mb-2 text-lg block" for="image">Снимка:</label>
             <input type='file' id="image" name="image"
                 class="px-4 py-2.5 text-md rounded-md bg-white border border-gray-400 w-full outline-blue-500" />
             @error('image')
