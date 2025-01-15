@@ -18,3 +18,8 @@ This is a university project built using Laravel and Breeze for authentication. 
 ![showDirector](https://github.com/user-attachments/assets/ec16d75b-e9bf-4063-961d-9742c280e96f)
 ![successMessage](https://github.com/user-attachments/assets/e46121fc-1d09-488a-9f0d-2faf5d2c125c)
 ![errorMessage](https://github.com/user-attachments/assets/8a1a24ff-cde4-4d7b-b4af-abaf9d9cd7e7)
+![adminPanel](https://github.com/user-attachments/assets/c004581b-1ea5-4fd4-aecf-7811d7cea938)
+![adminMovies](https://github.com/user-attachments/assets/f0012a02-57e5-411d-b574-cf45375492a9)
+![adminDirectors](https://github.com/user-attachments/assets/5d112758-d041-4f59-8fed-b90b49309f5b)
+![adminGenres](https://github.com/user-attachments/assets/1a1d041b-b85f-498d-99c3-70abae2a26a3)
+![adminUsers](https://github.com/user-attachments/assets/3162fb75-a5d6-48ed-87dd-d5c6e316a822)
