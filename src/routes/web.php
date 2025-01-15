@@ -34,5 +34,6 @@ Route::post('/directors', [DirectorController::class, 'store'])->name('directors
 Route::put('movies/{id}', [MovieController::class, 'update'])->name('movies.update')->middleware('auth');
 
 Route::delete('/movies/{id}', [MovieController::class, 'destroy'])->name('movies.delete')->middleware('auth');
+Route::delete('/admin/movies/{id}', [AdminMovieController::class, 'destroy'])->name('admin.movies.delete')->middleware(['auth', AdminMiddleware::class]);
 
 require __DIR__.'/auth.php';

@@ -37,7 +37,7 @@
                                         Език</th>
                                     <th scope="col"
                                         class="text-center px-6 py-3 text-xs font-medium text-gray-500 uppercase dark:text-neutral-400">
-                                        Създател</th>
+                                        Потребител</th>
                                     <th scope="col"
                                         class="text-center px-6 py-3 text-xs font-medium text-gray-500 uppercase dark:text-neutral-400">
                                         Операции</th>
@@ -64,10 +64,15 @@
                                         <td class="text-center px-6 py-4 whitespace-nowrap text-sm text-gray-800">
                                             {{ $movie->user->name }}</td>
                                         <td class="text-center px-6 py-4 whitespace-nowrap text-sm font-medium">
-                                            <button type="button"
-                                                class="inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent text-blue-600 hover:text-blue-800 focus:outline-none focus:text-blue-800 disabled:opacity-50 disabled:pointer-events-none dark:text-blue-500 dark:hover:text-blue-400 dark:focus:text-blue-400">Edit</button>
-                                            <button type="button"
-                                                class="inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent text-blue-600 hover:text-blue-800 focus:outline-none focus:text-blue-800 disabled:opacity-50 disabled:pointer-events-none dark:text-blue-500 dark:hover:text-blue-400 dark:focus:text-blue-400">Delete</button>
+                                            <a type="button"
+                                                class="cursor-pointer inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent text-blue-600 hover:text-blue-800 focus:outline-none focus:text-blue-800 disabled:opacity-50 disabled:pointer-events-none dark:text-blue-500 dark:hover:text-blue-400 dark:focus:text-blue-400">Редактиране</a>
+                                            <form action="{{ route('admin.movies.delete', ['id' => $movie->id]) }}" method="POST">
+                                                @csrf
+                                                @method('delete')
+                                                <button type="submit"
+                                                class="inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent text-blue-600 hover:text-blue-800 focus:outline-none focus:text-blue-800 disabled:opacity-50 disabled:pointer-events-none dark:text-blue-500 dark:hover:text-blue-400 dark:focus:text-blue-400">Изтриване</button>
+                                            </form>
+                                                
                                         </td>
                                     </tr>
                                 @endforeach

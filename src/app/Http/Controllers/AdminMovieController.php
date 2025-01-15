@@ -16,4 +16,16 @@ class AdminMovieController extends Controller
             'counter' => 0
         ]);
     }
+
+    public function destroy($id) {
+        $movie = Movie::find($id);
+        if (!$movie) {
+            return redirect()->route('admin.movies.index')->with('error', 'Не съществува такъв ресурс!');
+        }
+
+        $movie->delete();
+
+        return redirect()->route('admin.movies.index')->with('success', 'Филмът беше изтрит успешно!');
+
+    }
 }
