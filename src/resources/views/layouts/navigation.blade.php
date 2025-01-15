@@ -8,34 +8,58 @@
                     <a href="{{ route('movies.index') }}" class="h-[100%]">
                         <img src="{{ asset('logo.png') }}" class="h-[100%]" />
                     </a>
-                    <a href="{{ route('movies.index') }}" style="letter-spacing: 5px; color: #ff7600; font-family: sans-serif; font-weight: bold;">
+                    <a href="{{ route('movies.index') }}"
+                        style="letter-spacing: 5px; color: #ff7600; font-family: sans-serif; font-weight: bold;">
                         ФИЛМИ.БГ
                     </a>
                 </div>
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 xl:-my-px xl:ms-10 xl:flex">
-                    <x-nav-link :href="route('movies.index')" :active="request()->routeIs('movies.index')">
-                        {{ __('Начало') }}
-                    </x-nav-link>
+                    @if (Auth::check() && Auth::user()->is_admin)
+                        <x-nav-link :href="route('admin.dashboard.index')" :active="request()->routeIs('admin.dashboard.index')">
+                            {{ __('Табло') }}
+                        </x-nav-link>
+                    @else
+                        <x-nav-link :href="route('movies.index')" :active="request()->routeIs('movies.index')">
+                            {{ __('Начало') }}
+                        </x-nav-link>
+                    @endif
+
                 </div>
 
                 <div class="hidden space-x-8 xl:-my-px xl:ms-10 xl:flex">
-                    <x-nav-link :href="route('directors.index')" :active="request()->routeIs('directors.index')">
-                        {{ __('Режисьори') }}
-                    </x-nav-link>
+                    @if (Auth::check() && Auth::user()->is_admin)
+                        {{-- <x-nav-link :href="route('admin.dashboard.index')" :active="request()->routeIs('admin.dashboard.index')">
+                            {{ __('Табло') }}
+                        </x-nav-link> --}}
+                    @else
+                        <x-nav-link :href="route('directors.index')" :active="request()->routeIs('directors.index')">
+                            {{ __('Режисьори') }}
+                        </x-nav-link>
+                    @endif
+
                 </div>
 
                 <div class="hidden space-x-8 xl:-my-px xl:ms-10 xl:flex">
-                    <x-nav-link :href="route('genres.create')" :active="request()->routeIs('genres.create')">
-                        {{ __('Добавяне на жанр') }}
-                    </x-nav-link>
+                    @if (Auth::check() && Auth::user()->is_admin)
+                        {{-- <x-nav-link :href="route('admin.dashboard.index')" :active="request()->routeIs('admin.dashboard.index')">
+                            {{ __('Табло') }}
+                        </x-nav-link> --}}
+                    @else
+                        <x-nav-link :href="route('genres.create')" :active="request()->routeIs('genres.create')">
+                            {{ __('Добавяне на жанр') }}
+                        </x-nav-link>
+                    @endif
                 </div>
             </div>
 
             <!-- Settings Dropdown -->
             <div class="hidden xl:flex xl:items-center xl:ms-6">
-                @include('shared.partials.search-sorting')
+                @if (!(Auth::check() && Auth::user()->is_admin))
+                    @include('shared.partials.search-sorting')
+                @endif
+
                 @if (Auth::user())
                     <x-dropdown align="right" width="48">
                         <x-slot name="trigger">
@@ -102,26 +126,48 @@
     <!-- Responsive Navigation Menu -->
     <div :class="{ 'block': open, 'hidden': !open }" class="hidden xl:hidden">
         <div class="pt-2 pb-3 space-y-1">
-            <x-responsive-nav-link :href="route('movies.index')" :active="request()->routeIs('movies.index')">
-                {{ __('Начало') }}
-            </x-responsive-nav-link>
+            @if (Auth::check() && Auth::user()->is_admin)
+                <x-responsive-nav-link :href="route('admin.dashboard.index')" :active="request()->routeIs('admin.dashboard.index')">
+                    {{ __('Табло') }}
+                </x-responsive-nav-link>
+            @else
+                <x-responsive-nav-link :href="route('movies.index')" :active="request()->routeIs('movies.index')">
+                    {{ __('Начало') }}
+                </x-responsive-nav-link>
+            @endif
+
         </div>
 
         <div class="pt-2 pb-3 space-y-1">
-            <x-responsive-nav-link :href="route('directors.index')" :active="request()->routeIs('directors.index')">
-                {{ __('Режисьори') }}
-            </x-responsive-nav-link>
+            @if (Auth::check() && Auth::user()->is_admin)
+                {{-- <x-responsive-nav-link :href="route('admin.dashboard.index')" :active="request()->routeIs('admin.dashboard.index')">
+                    {{ __('Табло') }}
+                </x-responsive-nav-link> --}}
+            @else
+                <x-responsive-nav-link :href="route('directors.index')" :active="request()->routeIs('directors.index')">
+                    {{ __('Режисьори') }}
+                </x-responsive-nav-link>
+            @endif
         </div>
 
 
         <div class="pt-2 pb-3 space-y-1">
-            <x-responsive-nav-link :href="route('genres.create')" :active="request()->routeIs('genres.create')">
-                {{ __('Добавяне на жанр') }}
-            </x-responsive-nav-link>
+            @if (Auth::check() && Auth::user()->is_admin)
+                {{-- <x-responsive-nav-link :href="route('admin.dashboard.index')" :active="request()->routeIs('admin.dashboard.index')">
+                    {{ __('Табло') }}
+                </x-responsive-nav-link> --}}
+            @else
+                <x-responsive-nav-link :href="route('genres.create')" :active="request()->routeIs('genres.create')">
+                    {{ __('Добавяне на жанр') }}
+                </x-responsive-nav-link>
+            @endif
         </div>
 
         <!-- Responsive Settings Options -->
-        @include('shared.partials.search-sorting')
+        @if (!(Auth::check() && Auth::user()->is_admin))
+            @include('shared.partials.search-sorting')
+        @endif
+
         @if (Auth::user())
             <div class="pt-4 pb-1 border-t border-gray-200">
                 <div class="px-4">
