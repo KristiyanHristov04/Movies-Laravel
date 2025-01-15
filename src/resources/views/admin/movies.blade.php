@@ -65,12 +65,12 @@
                                             {{ $movie->user->name }}</td>
                                         <td class="text-center px-6 py-4 whitespace-nowrap text-sm font-medium">
                                             <a href="{{ route('admin.movies.edit', ["id" => $movie->id]) }}" type="button"
-                                                class="cursor-pointer inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent text-blue-600 hover:text-blue-800 focus:outline-none focus:text-blue-800 disabled:opacity-50 disabled:pointer-events-none dark:text-blue-500 dark:hover:text-blue-400 dark:focus:text-blue-400">Редактиране</a>
+                                                class="cursor-pointer inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent text-blue-600 hover:text-blue-800 focus:outline-none focus:text-blue-800 disabled:opacity-50 disabled:pointer-events-none dark:text-blue-500 dark:hover:text-blue-400 dark:focus:text-blue-400"><i class="fa-solid fa-pen-to-square"></i> Редактиране</a>
                                             <form action="{{ route('admin.movies.delete', ['id' => $movie->id]) }}" method="POST">
                                                 @csrf
                                                 @method('delete')
                                                 <button type="submit"
-                                                class="inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent text-blue-600 hover:text-blue-800 focus:outline-none focus:text-blue-800 disabled:opacity-50 disabled:pointer-events-none dark:text-blue-500 dark:hover:text-blue-400 dark:focus:text-blue-400">Изтриване</button>
+                                                class="inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent text-red-600 hover:text-red-800 focus:outline-none focus:text-red-800 disabled:opacity-50 disabled:pointer-events-none dark:text-red-500 dark:hover:text-red-400 dark:focus:text-red-400"><i class="fa-solid fa-trash"></i> Изтриване</button>
                                             </form>
                                                 
                                         </td>
