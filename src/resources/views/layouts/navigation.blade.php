@@ -18,7 +18,7 @@
                 <div class="hidden space-x-8 xl:-my-px xl:ms-10 xl:flex">
                     @if (Auth::check() && Auth::user()->is_admin)
                         <x-nav-link :href="route('admin.dashboard.index')" :active="request()->routeIs('admin.dashboard.index')">
-                            {{ __('Табло') }}
+                            {{ __('Административно табло') }}
                         </x-nav-link>
                     @else
                         <x-nav-link :href="route('movies.index')" :active="request()->routeIs('movies.index')">
@@ -128,7 +128,7 @@
         <div class="pt-2 pb-3 space-y-1">
             @if (Auth::check() && Auth::user()->is_admin)
                 <x-responsive-nav-link :href="route('admin.dashboard.index')" :active="request()->routeIs('admin.dashboard.index')">
-                    {{ __('Табло') }}
+                    {{ __('Административно табло') }}
                 </x-responsive-nav-link>
             @else
                 <x-responsive-nav-link :href="route('movies.index')" :active="request()->routeIs('movies.index')">
