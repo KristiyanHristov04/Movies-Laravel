@@ -60,7 +60,7 @@ class AdminDirectorController extends Controller
         $director->image_path = $filePath;
         $director->save();
 
-        return redirect()->route('admin.directors.index')->with('success', 'Режисьорът беше добавен успешно!');
+        return redirect()->route('admin.directors.index')->with('success', 'Режисьорът беше редактиран успешно!');
     }
 
     public function destroy($id)
