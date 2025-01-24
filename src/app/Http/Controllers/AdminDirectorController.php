@@ -10,7 +10,7 @@ class AdminDirectorController extends Controller
     public function index()
     {
         $directorsPerPage = 5;
-        $directors = Director::paginate($directorsPerPage);
+        $directors = Director::orderby('id', 'desc')->paginate($directorsPerPage);
 
         return view('admin.directors', [
             'directors' => $directors,

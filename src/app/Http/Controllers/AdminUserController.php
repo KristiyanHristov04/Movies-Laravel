@@ -10,7 +10,7 @@ class AdminUserController extends Controller
     public function index()
     {
         $usersPerPage = 5;
-        $users = User::paginate($usersPerPage);
+        $users = User::orderby('id', 'desc')->paginate($usersPerPage);
 
         return view('admin.users', [
             'users' => $users,

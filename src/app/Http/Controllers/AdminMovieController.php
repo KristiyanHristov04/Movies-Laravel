@@ -13,7 +13,7 @@ class AdminMovieController extends Controller
     public function index()
     {
         $moviesPerPage = 5;
-        $movies = Movie::paginate($moviesPerPage);
+        $movies = Movie::orderby('id', 'desc')->paginate($moviesPerPage);
 
         return view('admin.movies', [
             'movies' => $movies,

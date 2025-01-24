@@ -10,7 +10,7 @@ class AdminGenreController extends Controller
     public function index()
     {
         $genresPerPage = 5;
-        $genres = Genre::paginate($genresPerPage);
+        $genres = Genre::orderby('id', 'desc')->paginate($genresPerPage);
 
         return view('admin.genres', [
             'genres' => $genres,
